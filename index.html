@@ -212,6 +212,7 @@
       display:flex;
       gap:12px;
       align-items:flex-start;
+      min-width:0;
     }
     .num{
       width:38px;
@@ -227,6 +228,15 @@
       font-size:16px;
       line-height:1;
     }
+    /* для длинных подписей в квадрате */
+    .num--wide{
+      font-size:12px;
+      letter-spacing:-.01em;
+      padding:0 4px;
+      text-align:center;
+      line-height:1.05;
+    }
+
     .step p{
       margin:0;
       line-height:1.22;
@@ -274,6 +284,7 @@
       border-radius:11px;
       font-size:14px;
     }
+    .slide--subscription .num--wide{ font-size:10.5px; }
     .slide--subscription .step p{ font-size:16px; line-height:1.18; }
     .slide--subscription .step-desc{ font-size:13px; line-height:1.18; margin-top:4px; }
     .slide--subscription .note{ font-size:13px; margin-top:8px; }
@@ -321,8 +332,6 @@
 <body>
 <main class="deck">
 
-  <!-- ВСТАВИТЬ ПОСЛЕ СТР. 9 (Кейсы) ВАШЕЙ ИСХОДНОЙ ПРЕЗЕНТАЦИИ -->
-
   <!-- 1. Отбивка -->
   <section class="slide slide--mist">
     <div class="header">
@@ -338,8 +347,7 @@
     <div class="content" style="justify-content:center;">
       <h1 class="title">Коммерческое<br>предложение</h1>
       <p class="subtitle">
-        Поддержка, развитие и сопровождение цифровых продуктов сайт, мобильное приложение, портал DNM:
-        мониторинг, безопасность, контент, техническая поддержка, разработка, SLA.
+        Поддержка, развитие и сопровождение цифровых продуктов: сайт, мобильное приложение, портал DNM
       </p>
     </div>
 
@@ -553,8 +561,8 @@
         <div class="desc">In‑house команда</div>
       </div>
       <div class="tag">
-        <span class="pill">Кросс‑функционально</span>
-        <span class="pill">В штате</span>
+        <!-- убрали овалы "Кросс‑функционально" и "В штате" и заменили на "Команда" -->
+        <span class="pill">Команда</span>
       </div>
     </div>
 
@@ -568,12 +576,14 @@
         <div class="steps" style="grid-template-columns: repeat(3, 1fr);">
           <div class="step"><div class="num">UX</div><p><b>UX‑аналитика</b><br><span class="muted">исследования, сценарии, прототипы</span></p></div>
           <div class="step"><div class="num">UI</div><p><b>Дизайн</b><br><span class="muted">интерфейсы, дизайн‑система</span></p></div>
-          <div class="step"><div class="num">IT</div><p><b>IT</b><br><span class="muted">окружения, доступы, эксплуатация</span></p></div>
+          <div class="step"><div class="num num--wide">DevOps</div><p><b>DevOps</b><br><span class="muted">окружения, инфраструктура, эксплуатация</span></p></div>
+
           <div class="step"><div class="num">FE</div><p><b>Front‑end</b><br><span class="muted">верстка, компоненты</span></p></div>
           <div class="step"><div class="num">BE</div><p><b>Back‑end</b><br><span class="muted">API, БД, логика</span></p></div>
           <div class="step"><div class="num">QA</div><p><b>QA</b><br><span class="muted">тестирование, регресс, приемка</span></p></div>
+
           <div class="step"><div class="num">SEO</div><p><b>SEO</b><br><span class="muted">техзадачи, оптимизация</span></p></div>
-          <div class="step"><div class="num">CM</div><p><b>Контент</b><br><span class="muted">публикации, каталог</span></p></div>
+          <div class="step"><div class="num">CM</div><p><b>Контент‑менеджер</b><br><span class="muted">публикации, каталог</span></p></div>
           <div class="step"><div class="num">PM</div><p><b>PM</b><br><span class="muted">план, SLA, коммуникации</span></p></div>
         </div>
       </div>
@@ -784,8 +794,6 @@
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
-
-  <!-- ДАЛЕЕ ДОЛЖЕН ИДТИ ВАШ СЛАЙД 10 (Контакты) ИЗ ИСХОДНОЙ ПРЕЗЕНТАЦИИ -->
 
 </main>
 </body>
