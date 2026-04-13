@@ -81,7 +81,7 @@
     }
 
     .header{
-      padding:34px 56px 0 56px;
+      padding:32px 56px 0 56px;
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
@@ -96,15 +96,15 @@
       gap:6px;
     }
     .brand .name{
-      font-weight:500; /* Medium */
+      font-weight:500;            /* Medium */
       letter-spacing:.04em;
-      font-size:14px;
+      font-size:16px;             /* увеличено */
     }
     .brand .desc{
-      font-size:14px;
+      font-size:16px;             /* увеличено */
       color:var(--muted);
       line-height:1.35;
-      max-width:720px;
+      max-width:860px;
     }
 
     .tag{
@@ -118,46 +118,48 @@
       background:#fff;
       color:var(--muted);
       border-radius:999px;
-      padding:9px 12px;
-      font-size:12px;
+      padding:10px 14px;          /* увеличено */
+      font-size:13px;             /* увеличено */
       line-height:1;
       white-space:nowrap;
       font-weight:400;
     }
 
     .content{
-      padding:18px 56px 56px 56px;
-      height:calc(var(--slide-h) - 110px);
+      padding:16px 56px 52px 56px;  /* чуть компактнее, чтобы влезали крупные шрифты */
+      height:calc(var(--slide-h) - 108px);
       display:flex;
       flex-direction:column;
-      gap:18px;
+      gap:16px;
       position:relative;
       z-index:2;
     }
 
     h1,h2,h3{margin:0}
     .title{
-      font-size:56px;
+      font-size:62px;             /* увеличено */
       line-height:1.02;
       letter-spacing:-.02em;
-      font-weight:500; /* Medium */
+      font-weight:500;            /* Medium */
     }
-    .title--m{ font-size:44px; }
+    .title--m{
+      font-size:50px;             /* увеличено */
+    }
 
     .subtitle{
       margin:0;
-      font-size:20px;
+      font-size:22px;             /* увеличено */
       line-height:1.35;
       color:var(--muted);
-      max-width:1020px;
-      font-weight:400; /* Regular */
+      max-width:1120px;
+      font-weight:400;            /* Regular */
     }
 
     .grid-2{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
-      align-items:stretch; /* важно: выравнивание карточек по высоте */
+      align-items:stretch;         /* выравнивание карточек по высоте */
       margin-top:8px;
     }
 
@@ -166,26 +168,26 @@
       border:1px solid var(--line);
       border-radius:var(--r);
       padding:18px 20px;
-      height:100%; /* важно: выравнивание карточек по высоте */
+      height:100%;
     }
 
     .card h3{
-      font-size:16px;
-      font-weight:500; /* Medium */
-      margin:0 0 10px 0;
+      font-size:18px;              /* увеличено */
+      font-weight:500;             /* Medium */
+      margin:0 0 12px 0;
     }
 
     ul{ margin:0; padding-left:18px; }
     li{
       margin:7px 0;
-      line-height:1.3;
-      font-size:16px;
+      line-height:1.28;
+      font-size:17px;              /* увеличено */
       font-weight:400;
     }
 
     .note{
       color:var(--muted);
-      font-size:13px;
+      font-size:14px;              /* увеличено */
       line-height:1.45;
       margin-top:10px;
       font-weight:400;
@@ -197,7 +199,7 @@
       gap:12px 16px;
       margin-top:10px;
     }
-    .steps--1col{ grid-template-columns:1fr; } /* для шагов друг под другом */
+    .steps--1col{ grid-template-columns:1fr; }
 
     .step{
       background:#fff;
@@ -214,20 +216,25 @@
       border-radius:12px;
       background:linear-gradient(135deg, rgba(11,89,255,.12), rgba(0,194,177,.10));
       color:var(--accent);
-      font-weight:500; /* Medium */
+      font-weight:500;             /* Medium */
       display:flex;
       align-items:center;
       justify-content:center;
       flex:0 0 36px;
+      font-size:15px;
     }
     .step p{
       margin:0;
-      line-height:1.3;
-      font-size:16px;
+      line-height:1.28;
+      font-size:17px;              /* увеличено */
       font-weight:400;
     }
     .step p b{ font-weight:500; }
     .muted{ color:var(--muted); }
+
+    /* Для слайдов с очень длинными списками — мягко уплотняем, чтобы всё влезло */
+    .slide--dense li{ font-size:16px; margin:6px 0; }
+    .slide--dense .card{ padding:16px 18px; }
 
     .footer{
       position:absolute;
@@ -239,7 +246,7 @@
       align-items:center;
       gap:14px;
       color:var(--muted);
-      font-size:12px;
+      font-size:13px;              /* увеличено */
       z-index:2;
       flex-wrap:wrap;
       font-weight:400;
@@ -302,7 +309,7 @@
   </section>
 
   <!-- 2. Техподдержка -->
-  <section class="slide">
+  <section class="slide slide--dense">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
@@ -471,6 +478,7 @@
         (текущим статусом, временем на исполнение и т.д.).
       </p>
 
+      <!-- карточки выровнены по высоте через align-items:stretch + height:100% -->
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>В системе доступны</h3>
@@ -538,7 +546,7 @@
     </div>
   </section>
 
-  <!-- 7. Процесс работы -->
+  <!-- 7. Процесс работы SLA -->
   <section class="slide slide--mist">
     <div class="header">
       <div class="brand">
@@ -580,7 +588,7 @@
       </div>
       <div class="tag">
         <span class="pill">Портал «Масла»</span>
-        <span class="pill">SLA</span>
+        <span class="pill">SLA</span> <!-- заменили "Этапность" на "SLA" -->
       </div>
     </div>
 
@@ -602,7 +610,7 @@
 
         <div class="card">
           <h3>Срок</h3>
-          <p style="margin:0;font-size:20px;line-height:1.3;font-weight:400;">
+          <p style="margin:0;font-size:22px;line-height:1.3;font-weight:400;">
             <b style="font-weight:500;">Срок реализации — 5 месяцев</b>
           </p>
           <div class="note">
@@ -638,7 +646,7 @@
         а также создание email-рассыльщика в административной панели.
       </p>
 
-      <!-- шаги слева друг под другом, срок справа (как на слайде “Масла”) -->
+      <!-- Шаги друг под другом, срок справа (как на слайде “Масла”) -->
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>Этапы</h3>
@@ -653,7 +661,7 @@
 
         <div class="card">
           <h3>Срок</h3>
-          <p style="margin:0;font-size:20px;line-height:1.3;font-weight:400;">
+          <p style="margin:0;font-size:22px;line-height:1.3;font-weight:400;">
             <b style="font-weight:500;">Срок реализации — 3 месяца</b>
           </p>
           <div class="note">
