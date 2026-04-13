@@ -3,12 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UPLAB — Коммерческое предложение (доп. слайды)</title>
+  <title>UPLAB — Доп. слайды (после стр. 9, без нумерации)</title>
 
-  <!-- Inter как в исходной презентации -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TT Commons (локальные файлы в репозитории)
+       /fonts/TTCommons-Regular.ttf
+       /fonts/TTCommons-Medium.ttf -->
+  <style>
+    @font-face{
+      font-family:"TT Commons";
+      src: url("./fonts/TTCommons-Regular.ttf") format("truetype");
+      font-weight:400;
+      font-style:normal;
+      font-display:swap;
+    }
+    @font-face{
+      font-family:"TT Commons";
+      src: url("./fonts/TTCommons-Medium.ttf") format("truetype");
+      font-weight:500;
+      font-style:normal;
+      font-display:swap;
+    }
+  </style>
 
   <style>
     :root{
@@ -18,7 +33,6 @@
       --line:#E6EAF2;
       --soft:#F5F7FB;
 
-      /* спокойный фирменный акцент (можно заменить под точный из вашего файла) */
       --accent:#0B59FF;
       --accent2:#00C2B1;
 
@@ -30,9 +44,10 @@
     *{box-sizing:border-box}
     body{
       margin:0;
-      font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:"TT Commons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:400;
       color:var(--text);
-      background:#0f172a; /* фон вокруг при просмотре */
+      background:#0f172a;
     }
 
     .deck{
@@ -54,7 +69,6 @@
       page-break-after:always;
     }
 
-    /* легкая фирменная “дымка” как на современных титульных/отбивках */
     .slide--mist::after{
       content:"";
       position:absolute;
@@ -82,8 +96,8 @@
       gap:6px;
     }
     .brand .name{
-      font-weight:700;
-      letter-spacing:.02em;
+      font-weight:500; /* Medium */
+      letter-spacing:.04em;
       font-size:14px;
     }
     .brand .desc{
@@ -108,6 +122,7 @@
       font-size:12px;
       line-height:1;
       white-space:nowrap;
+      font-weight:400;
     }
 
     .content{
@@ -125,6 +140,7 @@
       font-size:56px;
       line-height:1.02;
       letter-spacing:-.02em;
+      font-weight:500; /* Medium */
     }
     .title--m{ font-size:44px; }
 
@@ -134,13 +150,14 @@
       line-height:1.35;
       color:var(--muted);
       max-width:1020px;
+      font-weight:400; /* Regular */
     }
 
     .grid-2{
       display:grid;
       grid-template-columns:1fr 1fr;
       gap:18px;
-      align-items:start;
+      align-items:stretch; /* важно: выравнивание карточек по высоте */
       margin-top:8px;
     }
 
@@ -149,22 +166,21 @@
       border:1px solid var(--line);
       border-radius:var(--r);
       padding:18px 20px;
+      height:100%; /* важно: выравнивание карточек по высоте */
     }
 
     .card h3{
       font-size:16px;
-      font-weight:700;
+      font-weight:500; /* Medium */
       margin:0 0 10px 0;
     }
 
-    ul{
-      margin:0;
-      padding-left:18px;
-    }
+    ul{ margin:0; padding-left:18px; }
     li{
       margin:7px 0;
       line-height:1.3;
       font-size:16px;
+      font-weight:400;
     }
 
     .note{
@@ -172,6 +188,7 @@
       font-size:13px;
       line-height:1.45;
       margin-top:10px;
+      font-weight:400;
     }
 
     .steps{
@@ -180,6 +197,8 @@
       gap:12px 16px;
       margin-top:10px;
     }
+    .steps--1col{ grid-template-columns:1fr; } /* для шагов друг под другом */
+
     .step{
       background:#fff;
       border:1px solid var(--line);
@@ -195,7 +214,7 @@
       border-radius:12px;
       background:linear-gradient(135deg, rgba(11,89,255,.12), rgba(0,194,177,.10));
       color:var(--accent);
-      font-weight:700;
+      font-weight:500; /* Medium */
       display:flex;
       align-items:center;
       justify-content:center;
@@ -205,8 +224,9 @@
       margin:0;
       line-height:1.3;
       font-size:16px;
+      font-weight:400;
     }
-    .step p b{ font-weight:700; }
+    .step p b{ font-weight:500; }
     .muted{ color:var(--muted); }
 
     .footer{
@@ -215,18 +235,14 @@
       right:56px;
       bottom:26px;
       display:flex;
-      justify-content:space-between;
+      justify-content:flex-start;
       align-items:center;
-      gap:16px;
+      gap:14px;
       color:var(--muted);
       font-size:12px;
       z-index:2;
-    }
-    .footer .contacts{
-      display:flex;
-      gap:14px;
       flex-wrap:wrap;
-      align-items:center;
+      font-weight:400;
     }
     .dot{
       width:4px;height:4px;border-radius:50%;
@@ -235,7 +251,7 @@
       transform:translateY(-1px);
     }
 
-    /* ---------- PRINT (PDF) ---------- */
+    /* PRINT (PDF) */
     @page { size: 297mm 167mm; margin: 0; } /* 16:9 */
     @media print{
       body{ background:#fff; }
@@ -256,6 +272,8 @@
 <body>
 <main class="deck">
 
+  <!-- ВСТАВИТЬ ПОСЛЕ СТР. 9 (Кейсы) ВАШЕЙ ИСХОДНОЙ ПРЕЗЕНТАЦИИ -->
+
   <!-- 1. Отбивка -->
   <section class="slide slide--mist">
     <div class="header">
@@ -265,23 +283,21 @@
       </div>
       <div class="tag">
         <span class="pill">Коммерческое предложение</span>
-        <span class="pill">Тендер</span>
+        <!-- убрали овал "Тендер" -->
       </div>
     </div>
 
     <div class="content" style="justify-content:center;">
       <h1 class="title">Коммерческое<br>предложение</h1>
       <p class="subtitle">
-        Поддержка, развитие и сопровождение цифровых продуктов: мониторинг, безопасность, контент, SEO, разработка и прозрачные процессы.
+        Поддержка, развитие и сопровождение цифровых продуктов сайт, мобильное приложение, портал DNM:
+        мониторинг, безопасность, контент, техническая поддержка, разработка, SLA.
       </p>
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>01</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -293,7 +309,7 @@
         <div class="desc">Техническая поддержка</div>
       </div>
       <div class="tag">
-        <span class="pill">SLA</span>
+        <!-- убрали овал "SLA" -->
         <span class="pill">Поддержка и развитие</span>
       </div>
     </div>
@@ -301,7 +317,7 @@
     <div class="content">
       <h2 class="title title--m">Техническая поддержка — полный спектр услуг</h2>
       <p class="subtitle">
-        Полная контент‑поддержка сайта на любой платформе, развитие текущего функционала и разработка нового
+        Техническая поддержка сайта, мобильного приложение, портала DNM, развитие текущего функционала и разработка нового
       </p>
 
       <div class="grid-2">
@@ -338,11 +354,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>02</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -387,11 +400,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>03</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -436,11 +446,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>04</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -486,11 +493,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>05</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -510,10 +514,7 @@
     <div class="content">
       <h2 class="title title--m">Команда</h2>
       <p class="subtitle">
-        Всесторонне изучаем бизнес клиента и предлагаем уникальные решения. Все сотрудники, необходимые
-        для поддержки и развития сайтов, работают у нас в штате:
-        UX‑аналитики, дизайнеры, IT‑специалисты, front‑end и back‑end разработчики, SEO‑специалисты,
-        контент‑менеджеры, QA‑специалисты, менеджеры проектов.
+        Изучаем бизнес клиента и предлагаем уникальные решения. Все сотрудники, необходимые для поддержки и развития сайтов, работают у нас в штате.
       </p>
 
       <div class="card" style="margin-top:16px;">
@@ -532,11 +533,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>06</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -554,7 +552,7 @@
     </div>
 
     <div class="content">
-      <h2 class="title title--m">Процесс работы</h2>
+      <h2 class="title title--m">Процесс работы SLA</h2>
 
       <div class="steps">
         <div class="step"><div class="num">01</div><p>Получаем обращение от клиента</p></div>
@@ -568,15 +566,12 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>07</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
-  <!-- 8. Тендер: Портал Масла -->
+  <!-- 8. Тендер: Масла -->
   <section class="slide">
     <div class="header">
       <div class="brand">
@@ -585,20 +580,20 @@
       </div>
       <div class="tag">
         <span class="pill">Портал «Масла»</span>
-        <span class="pill">Этапность</span>
+        <span class="pill">SLA</span>
       </div>
     </div>
 
     <div class="content">
       <h2 class="title title--m">Тендерное задание</h2>
       <p class="subtitle">
-        <b style="color:var(--text)">Портал «Масла»</b>: разработку предлагаем разделить на три этапа.
+        Внедрение функционала заказа моторных масел дилерскими центрами внутри портала DNM
       </p>
 
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>Этапы</h3>
-          <div class="steps" style="grid-template-columns:1fr;">
+          <div class="steps steps--1col">
             <div class="step"><div class="num">01</div><p><b>Аналитика</b></p></div>
             <div class="step"><div class="num">02</div><p><b>Реализация</b></p></div>
             <div class="step"><div class="num">03</div><p><b>Внедрение</b></p></div>
@@ -607,8 +602,8 @@
 
         <div class="card">
           <h3>Срок</h3>
-          <p style="margin:0;font-size:20px;line-height:1.3;">
-            <b>Срок реализации — 5 месяцев</b>
+          <p style="margin:0;font-size:20px;line-height:1.3;font-weight:400;">
+            <b style="font-weight:500;">Срок реализации — 5 месяцев</b>
           </p>
           <div class="note">
             Детальный план фиксируем после аналитики и согласования объема работ, интеграций и критериев приемки.
@@ -618,11 +613,8 @@
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>08</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
 
@@ -642,32 +634,42 @@
     <div class="content">
       <h2 class="title title--m">Механизм управления подпиской</h2>
       <p class="subtitle">
-        Разработку механизма управления подпиской пользователя на сайте и в мобильном приложении предлагаем разделить на пять этапов.
+        Внедрение функционала механизма управления подпиской пользователей на сайте kia.ru и в мобильном приложении Kia Russia,
+        а также создание email-рассыльщика в административной панели.
       </p>
 
-      <div class="card" style="margin-top:16px;">
-        <div class="steps">
-          <div class="step"><div class="num">01</div><p><b>Аналитика и проектирование</b><br><span class="muted">общее на сайт и МП</span></p></div>
-          <div class="step"><div class="num">02</div><p><b>Реализация KIA</b></p></div>
-          <div class="step"><div class="num">03</div><p><b>Внедрение KIA</b></p></div>
-          <div class="step"><div class="num">04</div><p><b>Реализация МП</b></p></div>
-          <div class="step"><div class="num">05</div><p><b>Внедрение МП</b></p></div>
+      <!-- шаги слева друг под другом, срок справа (как на слайде “Масла”) -->
+      <div class="grid-2" style="margin-top:16px;">
+        <div class="card">
+          <h3>Этапы</h3>
+          <div class="steps steps--1col">
+            <div class="step"><div class="num">01</div><p><b>Аналитика и проектирование</b><br><span class="muted">общее на сайт и МП</span></p></div>
+            <div class="step"><div class="num">02</div><p><b>Реализация KIA</b></p></div>
+            <div class="step"><div class="num">03</div><p><b>Внедрение KIA</b></p></div>
+            <div class="step"><div class="num">04</div><p><b>Реализация МП</b></p></div>
+            <div class="step"><div class="num">05</div><p><b>Внедрение МП</b></p></div>
+          </div>
         </div>
 
-        <div class="note" style="margin-top:12px;">
-          <b style="color:var(--text)">Срок реализации — 3 месяца.</b>
+        <div class="card">
+          <h3>Срок</h3>
+          <p style="margin:0;font-size:20px;line-height:1.3;font-weight:400;">
+            <b style="font-weight:500;">Срок реализации — 3 месяца</b>
+          </p>
+          <div class="note">
+            Срок уточняется после согласования требований, интеграций и критериев приемки.
+          </div>
         </div>
       </div>
     </div>
 
     <div class="footer">
-      <div class="contacts">
-        <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-        <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-      </div>
-      <div>09</div>
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
     </div>
   </section>
+
+  <!-- ДАЛЕЕ ДОЛЖЕН ИДТИ ВАШ СЛАЙД 10 (Контакты) ИЗ ИСХОДНОЙ ПРЕЗЕНТАЦИИ -->
 
 </main>
 </body>
