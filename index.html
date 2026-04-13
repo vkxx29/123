@@ -99,10 +99,10 @@
     .brand .name{
       font-weight:500;
       letter-spacing:.04em;
-      font-size:18px;          /* увеличено */
+      font-size:18px;
     }
     .brand .desc{
-      font-size:18px;          /* увеличено */
+      font-size:18px;
       color:var(--muted);
       line-height:1.35;
       max-width:920px;
@@ -120,14 +120,14 @@
       color:var(--muted);
       border-radius:999px;
       padding:11px 15px;
-      font-size:14px;          /* увеличено */
+      font-size:14px;
       line-height:1;
       white-space:nowrap;
       font-weight:400;
     }
 
     .content{
-      padding:14px 56px 50px 56px;  /* компактнее, чтобы влезали крупные шрифты */
+      padding:14px 56px 50px 56px;
       height:calc(var(--slide-h) - 104px);
       display:flex;
       flex-direction:column;
@@ -138,19 +138,19 @@
 
     h1,h2,h3{margin:0}
     .title{
-      font-size:70px;          /* увеличено */
+      font-size:70px;
       line-height:1.01;
       letter-spacing:-.02em;
       font-weight:500;
     }
     .title--m{
-      font-size:58px;          /* увеличено */
+      font-size:58px;
       line-height:1.04;
     }
 
     .subtitle{
       margin:0;
-      font-size:26px;          /* увеличено */
+      font-size:26px;
       line-height:1.34;
       color:var(--muted);
       max-width:1180px;
@@ -171,10 +171,11 @@
       border-radius:var(--r);
       padding:18px 20px;
       height:100%;
+      min-height:0; /* важно для внутренних переполнений */
     }
 
     .card h3{
-      font-size:20px;          /* увеличено */
+      font-size:20px;
       font-weight:500;
       margin:0 0 12px 0;
     }
@@ -183,13 +184,13 @@
     li{
       margin:7px 0;
       line-height:1.25;
-      font-size:19px;          /* увеличено */
+      font-size:19px;
       font-weight:400;
     }
 
     .note{
       color:var(--muted);
-      font-size:15px;          /* увеличено */
+      font-size:15px;
       line-height:1.45;
       margin-top:10px;
       font-weight:400;
@@ -229,7 +230,7 @@
     .step p{
       margin:0;
       line-height:1.22;
-      font-size:19px;          /* увеличено */
+      font-size:19px;
       font-weight:400;
     }
     .step p b{ font-weight:500; }
@@ -237,7 +238,7 @@
     .step-desc{
       display:block;
       margin-top:6px;
-      font-size:16px;          /* меньше основного, чтобы влезало */
+      font-size:16px;
       line-height:1.25;
       color:var(--muted);
     }
@@ -247,10 +248,38 @@
     /* Уплотнение слайдов с большими списками/много текста */
     .slide--dense li{ font-size:17px; margin:6px 0; }
     .slide--dense .card{ padding:16px 18px; }
+
     .slide--compact .content{ gap:12px; }
     .slide--compact .card{ padding:16px 18px; }
     .slide--compact .step p{ font-size:18px; }
     .slide--compact .step-desc{ font-size:15px; margin-top:5px; }
+
+    /* ===== FIX: последний слайд (подписка) не влезал =====
+       Делаем слайд чуть компактнее по вертикали ТОЛЬКО для него. */
+    .slide--subscription .content{
+      padding:10px 56px 44px 56px;
+      gap:10px;
+    }
+    .slide--subscription .title--m{ font-size:52px; }
+    .slide--subscription .subtitle{ font-size:23px; line-height:1.32; }
+    .slide--subscription .grid-2{ margin-top:10px; }
+    .slide--subscription .card{ padding:14px 16px; }
+    .slide--subscription .card h3{ margin-bottom:10px; font-size:18px; }
+
+    .slide--subscription .steps{ margin-top:8px; gap:8px; }
+    .slide--subscription .step{
+      padding:10px 12px;
+      border-radius:14px;
+      gap:10px;
+    }
+    .slide--subscription .num{
+      width:34px; height:34px; flex-basis:34px;
+      border-radius:11px;
+      font-size:14px;
+    }
+    .slide--subscription .step p{ font-size:16px; line-height:1.18; }
+    .slide--subscription .step-desc{ font-size:13px; line-height:1.18; margin-top:4px; }
+    .slide--subscription .note{ font-size:13px; margin-top:8px; }
 
     .footer{
       position:absolute;
@@ -262,7 +291,7 @@
       align-items:center;
       gap:14px;
       color:var(--muted);
-      font-size:14px;          /* увеличено */
+      font-size:14px;
       z-index:2;
       flex-wrap:wrap;
       font-weight:400;
@@ -288,6 +317,9 @@
       .header{ padding:12mm 16mm 0 16mm; }
       .content{ padding:6mm 16mm 14mm 16mm; height:auto; }
       .footer{ left:16mm; right:16mm; bottom:7mm; }
+
+      /* сохраняем компактность для подписки и при печати */
+      .slide--subscription .content{ padding:5mm 16mm 12mm 16mm; }
     }
   </style>
 </head>
@@ -306,7 +338,6 @@
       </div>
       <div class="tag">
         <span class="pill">Коммерческое предложение</span>
-        <!-- убрали овал "Тендер" -->
       </div>
     </div>
 
@@ -332,7 +363,6 @@
         <div class="desc">Техническая поддержка</div>
       </div>
       <div class="tag">
-        <!-- убрали овал "SLA" -->
         <span class="pill">Поддержка и развитие</span>
       </div>
     </div>
@@ -665,8 +695,8 @@
     </div>
   </section>
 
-  <!-- 9. Механизм управления подпиской -->
-  <section class="slide slide--mist slide--compact">
+  <!-- 9. Механизм управления подпиской (последний слайд) -->
+  <section class="slide slide--mist slide--subscription">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
@@ -685,7 +715,7 @@
         а также создание email-рассыльщика в административной панели.
       </p>
 
-      <div class="grid-2" style="margin-top:14px;">
+      <div class="grid-2">
         <div class="card">
           <h3>Этапы</h3>
           <div class="steps steps--1col">
@@ -694,8 +724,8 @@
               <p>
                 <b>Аналитика и проектирование</b>
                 <span class="step-desc">
-                  Моделирование основных процессов, проработка пользовательских сценариев,<br>
-                  описание пользовательских интерфейсов, моделирование архитектуры решения
+                  Моделирование основных процессов, проработка пользовательских сценариев, описание пользовательских интерфейсов,
+                  моделирование архитектуры решения
                 </span>
               </p>
             </div>
@@ -749,7 +779,7 @@
             <b style="font-weight:500;">Срок реализации — 3 месяца</b>
           </p>
           <div class="note">
-            Срок уточняется после согласования требований, интеграций и критериев приемки.
+            Детальный план фиксируем после аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
         </div>
       </div>
