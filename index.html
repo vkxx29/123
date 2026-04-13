@@ -32,6 +32,7 @@
     }
 
     *{ box-sizing:border-box; }
+
     body{
       margin:0;
       font-family:"TT Commons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -40,6 +41,7 @@
       background:#0f172a;
     }
 
+    /* ── Обёртка ── */
     .deck{
       display:flex;
       flex-direction:column;
@@ -48,6 +50,7 @@
       align-items:center;
     }
 
+    /* ── Слайд ── */
     .slide{
       width:var(--slide-w);
       height:var(--slide-h);
@@ -70,6 +73,7 @@
       pointer-events:none;
     }
 
+    /* ── Шапка ── */
     .header{
       padding:28px 56px 0 56px;
       display:flex;
@@ -91,6 +95,7 @@
       line-height:1; white-space:nowrap; font-weight:400;
     }
 
+    /* ── Контент ── */
     .content{
       padding:12px 56px 48px 56px;
       display:flex;
@@ -167,6 +172,7 @@
 
     .muted{ color:var(--muted); }
 
+    /* ── Футер ── */
     .footer{
       position:absolute;
       left:56px; right:56px; bottom:20px;
@@ -182,9 +188,7 @@
       background:var(--line); display:inline-block; transform:translateY(-1px);
     }
 
-    /* ══════════════════════════════════════════
-       СЛАЙД 2 — Техподдержка
-    ══════════════════════════════════════════ */
+    /* ══ Слайд 2 ══ */
     .slide--support .content{ gap:10px; }
     .slide--support .title--m{ font-size:48px; }
     .slide--support .subtitle{ font-size:20px; }
@@ -193,15 +197,11 @@
     .slide--support .grid-2{ align-items:stretch; }
     .slide--support .card{ height:100%; }
 
-    /* ══════════════════════════════════════════
-       СЛАЙД 5 — Прозрачность процессов
-    ══════════════════════════════════════════ */
+    /* ══ Слайд 5 ══ */
     .slide--transparency .grid-2{ align-items:stretch; }
     .slide--transparency .card{ height:100%; }
 
-    /* ══════════════════════════════════════════
-       СЛАЙД 6 — Команда
-    ══════════════════════════════════════════ */
+    /* ══ Слайд 6 ══ */
     .slide--team .content{ gap:10px; }
     .slide--team .title--m{ font-size:50px; }
     .slide--team .subtitle{ font-size:21px; }
@@ -211,9 +211,7 @@
     .slide--team .num{ width:32px; height:32px; flex:0 0 32px; font-size:13px; border-radius:9px; }
     .slide--team .num--wide{ font-size:10px; }
 
-    /* ══════════════════════════════════════════
-       СЛАЙД 8 — Портал Масла
-    ══════════════════════════════════════════ */
+    /* ══ Слайд 8 ══ */
     .slide--oils .content{ gap:10px; }
     .slide--oils .title--m{ font-size:50px; }
     .slide--oils .subtitle{ font-size:21px; }
@@ -224,9 +222,7 @@
     .slide--oils .step-desc{ font-size:13px; margin-top:3px; }
     .slide--oils .num{ width:32px; height:32px; flex:0 0 32px; font-size:13px; border-radius:9px; }
 
-    /* ══════════════════════════════════════════
-       СЛАЙД 9 — Подписка
-    ══════════════════════════════════════════ */
+    /* ══ Слайд 9 ══ */
     .slide--subscription .header{ padding-top:20px; }
     .slide--subscription .content{ gap:7px; padding-top:8px; padding-bottom:44px; }
     .slide--subscription .title--m{ font-size:48px; line-height:1.02; }
@@ -239,50 +235,85 @@
     .slide--subscription .num{ width:30px; height:30px; flex:0 0 30px; border-radius:9px; font-size:12px; }
     .slide--subscription .step p{ font-size:14px; line-height:1.18; }
     .slide--subscription .step-desc{ font-size:12.5px; line-height:1.2; margin-top:3px; }
-
-    .slide--subscription .card--term{
-      align-self:start;
-      padding:14px 16px;
-      height:auto;
-    }
+    .slide--subscription .card--term{ align-self:start; padding:14px 16px; height:auto; }
     .slide--subscription .card--term h3{ font-size:18px; margin-bottom:10px; }
     .slide--subscription .card--term .note{ font-size:14px; line-height:1.4; margin-top:8px; }
 
     /* ══════════════════════════════════════════
-       ПЕЧАТЬ
+       ПЕЧАТЬ — ключевой блок
     ══════════════════════════════════════════ */
-    @page{ size:297mm 167mm; margin:0; }
+    @page{
+      size: 297mm 167mm;
+      margin: 0;
+    }
 
     @media print{
-      html, body{ width:297mm; height:167mm; background:#fff; }
-
-      .deck{ padding:0; gap:0; background:#fff; }
-
-      .slide{
-        width:297mm !important;
-        height:167mm !important;
-        border-radius:0;
-        box-shadow:none;
-        overflow:hidden;
-        position:relative;
-        page-break-after:always;
-        page-break-inside:avoid;
-        display:block;
+      html{
+        width: 297mm;
+        height: 167mm;
       }
 
-      .header{ padding:9mm 14mm 0 14mm !important; }
+      body{
+        width: 297mm;
+        height: 167mm;
+        margin: 0;
+        padding: 0;
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* убираем flex-обёртку — она ломает постраничность */
+      .deck{
+        display: block !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        background: #fff !important;
+      }
+
+      /* каждый слайд = одна страница PDF */
+      .slide{
+        display: block !important;
+        width: 297mm !important;
+        height: 167mm !important;
+        min-height: 167mm !important;
+        max-height: 167mm !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: hidden !important;
+        position: relative !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        /* оба варианта для максимальной совместимости */
+        break-after: page;
+        page-break-after: always;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+
+      /* последний слайд — без лишней страницы после */
+      .slide:last-child{
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      .header{
+        padding: 9mm 14mm 0 14mm !important;
+      }
 
       .content{
-        padding:4mm 14mm 12mm 14mm !important;
-        height:calc(167mm - 22mm) !important;
-        overflow:hidden !important;
-        display:flex;
-        flex-direction:column;
+        padding: 4mm 14mm 12mm 14mm !important;
+        height: calc(167mm - 22mm) !important;
+        overflow: hidden !important;
+        display: flex !important;
+        flex-direction: column !important;
       }
 
       .footer{
-        left:14mm !important; right:14mm !important;
-        bottom:6mm !important; font-size:11px;
+        left: 14mm !important;
+        right: 14mm !important;
+        bottom: 6mm !important;
+        font-size: 11px !important;
       }
 
       /* Слайд 2 */
@@ -316,11 +347,7 @@
 
       /* Слайд 9 */
       .slide--subscription .header{ padding-top:7mm !important; }
-      .slide--subscription .content{
-        padding-top:3mm !important;
-        padding-bottom:10mm !important;
-        gap:5px !important;
-      }
+      .slide--subscription .content{ padding-top:3mm !important; padding-bottom:10mm !important; gap:5px !important; }
       .slide--subscription .title--m{ font-size:38pt !important; }
       .slide--subscription .subtitle{ font-size:14pt !important; }
       .slide--subscription .step p{ font-size:10.5pt !important; }
@@ -495,7 +522,7 @@
     </div>
   </section>
 
-  <!-- 5. Прозрачность процессов — добавлен класс slide--transparency -->
+  <!-- 5. Прозрачность процессов -->
   <section class="slide slide--mist slide--transparency">
     <div class="header">
       <div class="brand">
