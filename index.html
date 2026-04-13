@@ -258,90 +258,93 @@
     .slide--compact .step p{ font-size:18px; }
     .slide--compact .step-desc{ font-size:15px; margin-top:5px; }
 
-    /* ===== ПЕРЕРАБОТАННЫЕ СТИЛИ ПОСЛЕДНЕГО СЛАЙДА ===== */
+    /* ============================================
+       ПОСЛЕДНИЙ СЛАЙД — правки только верстки
+       ============================================ */
     .slide--subscription .header{
-      padding:22px 56px 0 56px;
+      padding-top:20px;
+      padding-bottom:0;
     }
 
     .slide--subscription .content{
-      padding:8px 56px 36px 56px;
+      padding-top:8px;
+      padding-bottom:44px;
       gap:6px;
-      height:calc(var(--slide-h) - 80px);
-      overflow:hidden;
     }
 
     .slide--subscription .title--m{
-      font-size:44px;
-      line-height:1.05;
+      font-size:46px;
+      line-height:1.02;
     }
 
     .slide--subscription .subtitle{
-      font-size:19px;
+      font-size:20px;
       line-height:1.28;
     }
 
     .slide--subscription .grid-2{
       margin-top:6px;
-      gap:12px;
-      align-items:start;
-      flex:1 1 auto;
-      min-height:0;
+      gap:14px;
+      align-items:start;   /* карточки не тянутся по высоте друг друга */
     }
 
+    /* левая карточка — этапы */
     .slide--subscription .card{
-      padding:10px 14px;
-      overflow:hidden;
+      padding:12px 14px;
+      height:auto;         /* снимаем height:100% */
     }
 
     .slide--subscription .card h3{
-      margin-bottom:6px;
-      font-size:16px;
+      font-size:17px;
+      margin-bottom:8px;
     }
 
     .slide--subscription .steps{
-      margin-top:4px;
+      margin-top:5px;
       gap:5px;
     }
 
     .slide--subscription .step{
-      padding:6px 10px;
+      padding:7px 10px;
       border-radius:12px;
-      gap:8px;
+      gap:9px;
     }
 
     .slide--subscription .num{
       width:30px;
       height:30px;
-      flex-basis:30px;
+      flex:0 0 30px;
       border-radius:9px;
-      font-size:12px;
-    }
-
-    .slide--subscription .num--wide{
-      font-size:9px;
+      font-size:13px;
     }
 
     .slide--subscription .step p{
       font-size:14px;
-      line-height:1.15;
+      line-height:1.18;
     }
 
     .slide--subscription .step-desc{
-      font-size:11.5px;
-      line-height:1.15;
-      margin-top:2px;
-    }
-
-    .slide--subscription .note{
       font-size:12px;
-      margin-top:6px;
-      line-height:1.3;
+      line-height:1.2;
+      margin-top:3px;
     }
 
-    .slide--subscription .card--term p{
-      font-size:22px !important;
+    /* правая карточка — срок */
+    .slide--subscription .card--term{
+      align-self:start;
     }
-    /* ===== КОНЕЦ ПЕРЕРАБОТАННЫХ СТИЛЕЙ ===== */
+
+    .slide--subscription .card--term h3{
+      font-size:17px;
+      margin-bottom:8px;
+    }
+
+    .slide--subscription .card--term .note{
+      font-size:13px;
+      line-height:1.35;
+      margin-top:8px;
+    }
+    /* ============================================ */
 
     .footer{
       position:absolute;
@@ -379,12 +382,8 @@
       .content{ padding:6mm 16mm 14mm 16mm; height:auto; }
       .footer{ left:16mm; right:16mm; bottom:7mm; }
 
-      .slide--subscription .header{ padding:8mm 16mm 0 16mm; }
-      .slide--subscription .content{
-        padding:3mm 16mm 10mm 16mm;
-        height:auto;
-        overflow:hidden;
-      }
+      .slide--subscription .header{ padding-top:7mm; }
+      .slide--subscription .content{ padding-top:3mm; padding-bottom:10mm; }
     }
   </style>
 </head>
@@ -758,7 +757,7 @@
     </div>
   </section>
 
-  <!-- 9. Механизм управления подпиской — ИСПРАВЛЕННЫЙ -->
+  <!-- 9. Механизм управления подпиской -->
   <section class="slide slide--mist slide--subscription">
     <div class="header">
       <div class="brand">
@@ -787,7 +786,8 @@
               <p>
                 <b>Аналитика и проектирование</b>
                 <span class="step-desc">
-                  Моделирование процессов, сценарии, интерфейсы, архитектура решения
+                  Моделирование основных процессов, проработка пользовательских сценариев, описание пользовательских интерфейсов,
+                  моделирование архитектуры решения
                 </span>
               </p>
             </div>
@@ -797,7 +797,8 @@
               <p>
                 <b>Реализация сайт</b>
                 <span class="step-desc">
-                  Формы подписки, ЛК, интеграция с CRM, админ-система рассылок
+                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете,
+                  Доработка интеграции с CRM, Административная система с управлением рассылками
                 </span>
               </p>
             </div>
@@ -807,7 +808,7 @@
               <p>
                 <b>Внедрение сайт</b>
                 <span class="step-desc">
-                  Проверка и релиз на prod
+                  Проверка работы разделов перед релизом и релиз на prod среду
                 </span>
               </p>
             </div>
@@ -817,7 +818,7 @@
               <p>
                 <b>Реализация МП</b>
                 <span class="step-desc">
-                  Формы подписки на новости и в ЛК
+                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете
                 </span>
               </p>
             </div>
@@ -827,16 +828,17 @@
               <p>
                 <b>Внедрение МП</b>
                 <span class="step-desc">
-                  Проверка и релиз на prod
+                  Проверка работы разделов перед релизом и релиз на prod среду
                 </span>
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card card--term" style="align-self:start;">
+        <!-- добавлен класс card--term -->
+        <div class="card card--term">
           <h3>Срок</h3>
-          <p style="margin:0;font-size:22px;line-height:1.2;font-weight:400;">
+          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:400;">
             <b style="font-weight:500;">Срок реализации — 3 месяца</b>
           </p>
           <div class="note">
