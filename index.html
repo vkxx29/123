@@ -171,7 +171,7 @@
       border-radius:var(--r);
       padding:18px 20px;
       height:100%;
-      min-height:0; /* важно для внутренних переполнений */
+      min-height:0;
     }
 
     .card h3{
@@ -245,7 +245,6 @@
 
     .muted{ color:var(--muted); }
 
-    /* Уплотнение слайдов с большими списками/много текста */
     .slide--dense li{ font-size:17px; margin:6px 0; }
     .slide--dense .card{ padding:16px 18px; }
 
@@ -254,8 +253,6 @@
     .slide--compact .step p{ font-size:18px; }
     .slide--compact .step-desc{ font-size:15px; margin-top:5px; }
 
-    /* ===== FIX: последний слайд (подписка) не влезал =====
-       Делаем слайд чуть компактнее по вертикали ТОЛЬКО для него. */
     .slide--subscription .content{
       padding:10px 56px 44px 56px;
       gap:10px;
@@ -303,7 +300,6 @@
       transform:translateY(-1px);
     }
 
-    /* PRINT (PDF) */
     @page { size: 297mm 167mm; margin: 0; } /* 16:9 */
     @media print{
       body{ background:#fff; }
@@ -317,8 +313,6 @@
       .header{ padding:12mm 16mm 0 16mm; }
       .content{ padding:6mm 16mm 14mm 16mm; height:auto; }
       .footer{ left:16mm; right:16mm; bottom:7mm; }
-
-      /* сохраняем компактность для подписки и при печати */
       .slide--subscription .content{ padding:5mm 16mm 12mm 16mm; }
     }
   </style>
@@ -624,7 +618,7 @@
     </div>
   </section>
 
-  <!-- 8. Портал "Масла" (предпоследний слайд) -->
+  <!-- 8. Портал "Масла" -->
   <section class="slide slide--compact">
     <div class="header">
       <div class="brand">
@@ -683,7 +677,7 @@
             <b style="font-weight:500;">Срок реализации — 5 месяцев</b>
           </p>
           <div class="note">
-            Детальный план фиксируем после аналитики и согласования объема работ, интеграций и критериев приемки.
+            Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
         </div>
       </div>
@@ -695,7 +689,7 @@
     </div>
   </section>
 
-  <!-- 9. Механизм управления подпиской (последний слайд) -->
+  <!-- 9. Механизм управления подпиской -->
   <section class="slide slide--mist slide--subscription">
     <div class="header">
       <div class="brand">
@@ -779,7 +773,7 @@
             <b style="font-weight:500;">Срок реализации — 3 месяца</b>
           </p>
           <div class="note">
-            Детальный план фиксируем после аналитики и согласования объема работ, интеграций и критериев приемки.
+            Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
         </div>
       </div>
