@@ -327,19 +327,27 @@
       margin-top:3px;
     }
 
+    /*
+      .card--term — карточка «Срок реализации».
+      Сбрасываем все переопределения .slide--subscription,
+      чтобы размеры совпадали со слайдом 8 (slide--compact).
+    */
     .slide--subscription .card--term{
       align-self:start;
+      /* возвращаем размеры как в .slide--compact */
+      padding:16px 18px;
+      height:auto;
     }
 
     .slide--subscription .card--term h3{
-      font-size:18px;
-      margin-bottom:8px;
+      font-size:20px;
+      margin-bottom:12px;
     }
 
     .slide--subscription .card--term .note{
-      font-size:14px;
-      line-height:1.38;
-      margin-top:8px;
+      font-size:15px;
+      line-height:1.45;
+      margin-top:10px;
     }
     /* ============================================ */
 
@@ -736,10 +744,11 @@
           </div>
         </div>
 
+        <!-- ↓ h3 и текст изменены -->
         <div class="card">
-          <h3>Срок</h3>
-          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:400;">
-            <b style="font-weight:500;">Срок реализации — 5 месяцев</b>
+          <h3>Срок реализации</h3>
+          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">
+            5 месяцев
           </p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
@@ -832,10 +841,11 @@
           </div>
         </div>
 
+        <!-- ↓ h3 и текст изменены; стили карточки сброшены через .card--term -->
         <div class="card card--term">
-          <h3>Срок</h3>
-          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:400;">
-            <b style="font-weight:500;">Срок реализации — 3 месяца</b>
+          <h3>Срок реализации</h3>
+          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">
+            3 месяца
           </p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
