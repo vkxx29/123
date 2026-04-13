@@ -3,22 +3,18 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UPLAB — Доп. слайды (после стр. 9, без нумерации)</title>
+  <title>UPLAB — Доп. слайды</title>
 
   <style>
     @font-face{
       font-family:"TT Commons";
       src: url("./fonts/TTCommons-Regular.ttf") format("truetype");
-      font-weight:400;
-      font-style:normal;
-      font-display:swap;
+      font-weight:400; font-style:normal; font-display:swap;
     }
     @font-face{
       font-family:"TT Commons";
       src: url("./fonts/TTCommons-Medium.ttf") format("truetype");
-      font-weight:500;
-      font-style:normal;
-      font-display:swap;
+      font-weight:500; font-style:normal; font-display:swap;
     }
   </style>
 
@@ -29,16 +25,13 @@
       --muted:#6B7280;
       --line:#E6EAF2;
       --soft:#F5F7FB;
-
       --accent:#0B59FF;
-      --accent2:#00C2B1;
-
       --slide-w:1366px;
       --slide-h:768px;
       --r:18px;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
     body{
       margin:0;
       font-family:"TT Commons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -55,340 +48,283 @@
       align-items:center;
     }
 
+    /* ── Слайд-контейнер ── */
     .slide{
       width:var(--slide-w);
       height:var(--slide-h);
       background:var(--bg);
       border-radius:22px;
-      box-shadow: 0 26px 90px rgba(0,0,0,.35);
+      box-shadow:0 26px 90px rgba(0,0,0,.35);
       overflow:hidden;
       position:relative;
       page-break-after:always;
+      page-break-inside:avoid;
     }
 
     .slide--mist::after{
       content:"";
       position:absolute;
       inset:-120px -120px auto auto;
-      width:760px;
-      height:520px;
-      background:radial-gradient(closest-side, rgba(11,89,255,.16), rgba(0,194,177,.08) 45%, rgba(255,255,255,0) 70%);
+      width:760px; height:520px;
+      background:radial-gradient(closest-side,rgba(11,89,255,.16),rgba(0,194,177,.08) 45%,rgba(255,255,255,0) 70%);
       transform:rotate(8deg);
       pointer-events:none;
     }
 
+    /* ── Шапка ── */
     .header{
-      padding:30px 56px 0 56px;
+      padding:28px 56px 0 56px;
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:16px;
       position:relative;
       z-index:2;
+      flex-shrink:0;
     }
+    .brand{ display:flex; flex-direction:column; gap:4px; }
+    .brand .name{ font-weight:500; letter-spacing:.04em; font-size:17px; }
+    .brand .desc{ font-size:17px; color:var(--muted); line-height:1.3; max-width:920px; }
 
-    .brand{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-    }
-    .brand .name{
-      font-weight:500;
-      letter-spacing:.04em;
-      font-size:18px;
-    }
-    .brand .desc{
-      font-size:18px;
-      color:var(--muted);
-      line-height:1.35;
-      max-width:920px;
-    }
-
-    .tag{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      justify-content:flex-end;
-    }
+    .tag{ display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end; }
     .pill{
-      border:1px solid var(--line);
-      background:#fff;
-      color:var(--muted);
-      border-radius:999px;
-      padding:11px 15px;
-      font-size:14px;
-      line-height:1;
-      white-space:nowrap;
-      font-weight:400;
+      border:1px solid var(--line); background:#fff; color:var(--muted);
+      border-radius:999px; padding:9px 14px; font-size:13px;
+      line-height:1; white-space:nowrap; font-weight:400;
     }
 
+    /* ── Контент ── */
     .content{
-      padding:14px 56px 50px 56px;
-      height:calc(var(--slide-h) - 104px);
+      padding:12px 56px 48px 56px;
       display:flex;
       flex-direction:column;
-      gap:14px;
+      gap:12px;
       position:relative;
       z-index:2;
+      /* высота = слайд − шапка (~72px) */
+      height:calc(var(--slide-h) - 72px);
+      overflow:hidden;
     }
 
-    h1,h2,h3{margin:0}
-    .title{
-      font-size:70px;
-      line-height:1.01;
-      letter-spacing:-.02em;
-      font-weight:500;
-    }
-    .title--m{
-      font-size:58px;
-      line-height:1.04;
-    }
+    h1,h2,h3{ margin:0; }
+    .title{ font-size:68px; line-height:1.01; letter-spacing:-.02em; font-weight:500; }
+    .title--m{ font-size:54px; line-height:1.03; }
 
     .subtitle{
-      margin:0;
-      font-size:26px;
-      line-height:1.34;
-      color:var(--muted);
-      max-width:1180px;
-      font-weight:400;
+      margin:0; font-size:24px; line-height:1.3;
+      color:var(--muted); max-width:1180px; font-weight:400;
     }
 
     .grid-2{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:18px;
-      align-items:stretch;
-      margin-top:8px;
+      gap:14px;
+      align-items:start;
+      margin-top:6px;
+      min-height:0;
     }
 
     .card{
       background:var(--soft);
       border:1px solid var(--line);
       border-radius:var(--r);
-      padding:18px 20px;
-      height:100%;
+      padding:14px 16px;
       min-height:0;
     }
+    .card h3{ font-size:18px; font-weight:500; margin:0 0 10px 0; }
 
-    .card h3{
-      font-size:20px;
-      font-weight:500;
-      margin:0 0 12px 0;
-    }
+    ul{ margin:0; padding-left:16px; }
+    li{ margin:5px 0; line-height:1.22; font-size:16px; font-weight:400; }
 
-    ul{ margin:0; padding-left:18px; }
-    li{
-      margin:7px 0;
-      line-height:1.25;
-      font-size:19px;
-      font-weight:400;
-    }
-
-    .note{
-      color:var(--muted);
-      font-size:15px;
-      line-height:1.45;
-      margin-top:10px;
-      font-weight:400;
-    }
+    .note{ color:var(--muted); font-size:14px; line-height:1.4; margin-top:8px; }
 
     .steps{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:12px 16px;
-      margin-top:10px;
+      gap:8px 12px;
+      margin-top:8px;
     }
     .steps--1col{ grid-template-columns:1fr; }
 
     .step{
       background:#fff;
       border:1px solid var(--line);
-      border-radius:16px;
-      padding:14px 14px;
+      border-radius:14px;
+      padding:10px 12px;
       display:flex;
-      gap:12px;
+      gap:10px;
       align-items:flex-start;
       min-width:0;
     }
     .num{
-      width:38px;
-      height:38px;
-      border-radius:12px;
-      background:linear-gradient(135deg, rgba(11,89,255,.12), rgba(0,194,177,.10));
-      color:var(--accent);
-      font-weight:500;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex:0 0 38px;
-      font-size:16px;
-      line-height:1;
+      width:34px; height:34px; border-radius:10px;
+      background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
+      color:var(--accent); font-weight:500;
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 34px; font-size:14px; line-height:1;
     }
-    .num--wide{
-      font-size:12px;
-      letter-spacing:-.01em;
-      padding:0 4px;
-      text-align:center;
-      line-height:1.05;
-    }
+    .num--wide{ font-size:11px; letter-spacing:-.01em; padding:0 3px; text-align:center; line-height:1.05; }
 
-    .step p{
-      margin:0;
-      line-height:1.22;
-      font-size:19px;
-      font-weight:400;
-    }
+    .step p{ margin:0; line-height:1.2; font-size:16px; font-weight:400; }
     .step p b{ font-weight:500; }
-
-    .step-desc{
-      display:block;
-      margin-top:6px;
-      font-size:16px;
-      line-height:1.25;
-      color:var(--muted);
-    }
+    .step-desc{ display:block; margin-top:4px; font-size:13.5px; line-height:1.22; color:var(--muted); }
 
     .muted{ color:var(--muted); }
 
-    .slide--dense li{ font-size:17px; margin:6px 0; }
-    .slide--dense .card{ padding:16px 18px; }
-
-    .slide--compact .content{ gap:12px; }
-    .slide--compact .card{ padding:16px 18px; }
-    .slide--compact .step p{ font-size:18px; }
-    .slide--compact .step-desc{ font-size:15px; margin-top:5px; }
-
-    /* ============================================
-       ПОСЛЕДНИЙ СЛАЙД
-       ============================================ */
-    .slide--subscription .header{
-      padding-top:22px;
-    }
-
-    .slide--subscription .content{
-      padding-top:8px;
-      padding-bottom:44px;
-      gap:7px;
-    }
-
-    .slide--subscription .title--m{
-      font-size:50px;
-      line-height:1.02;
-    }
-
-    .slide--subscription .subtitle{
-      font-size:22px;
-      line-height:1.28;
-    }
-
-    .slide--subscription .grid-2{
-      margin-top:7px;
-      gap:14px;
-      align-items:start;
-    }
-
-    .slide--subscription .card{
-      padding:12px 16px;
-      height:auto;
-    }
-
-    .slide--subscription .card h3{
-      font-size:18px;
-      margin-bottom:8px;
-    }
-
-    .slide--subscription .steps{
-      margin-top:6px;
-      gap:6px;
-    }
-
-    .slide--subscription .step{
-      padding:8px 12px;
-      border-radius:12px;
-      gap:10px;
-    }
-
-    .slide--subscription .num{
-      width:32px;
-      height:32px;
-      flex:0 0 32px;
-      border-radius:10px;
-      font-size:13px;
-    }
-
-    .slide--subscription .step p{
-      font-size:16px;
-      line-height:1.2;
-    }
-
-    .slide--subscription .step-desc{
-      font-size:13.5px;
-      line-height:1.22;
-      margin-top:3px;
-    }
-
-    /*
-      .card--term — карточка «Срок реализации».
-      Сбрасываем все переопределения .slide--subscription,
-      чтобы размеры совпадали со слайдом 8 (slide--compact).
-    */
-    .slide--subscription .card--term{
-      align-self:start;
-      /* возвращаем размеры как в .slide--compact */
-      padding:16px 18px;
-      height:auto;
-    }
-
-    .slide--subscription .card--term h3{
-      font-size:20px;
-      margin-bottom:12px;
-    }
-
-    .slide--subscription .card--term .note{
-      font-size:15px;
-      line-height:1.45;
-      margin-top:10px;
-    }
-    /* ============================================ */
-
+    /* ── Футер ── */
     .footer{
       position:absolute;
-      left:56px;
-      right:56px;
-      bottom:26px;
+      left:56px; right:56px; bottom:20px;
       display:flex;
       justify-content:flex-start;
       align-items:center;
-      gap:14px;
-      color:var(--muted);
-      font-size:14px;
-      z-index:2;
-      flex-wrap:wrap;
-      font-weight:400;
+      gap:12px;
+      color:var(--muted); font-size:13px;
+      z-index:2; flex-wrap:wrap; font-weight:400;
     }
     .dot{
-      width:4px;height:4px;border-radius:50%;
-      background:var(--line);
-      display:inline-block;
-      transform:translateY(-1px);
+      width:4px; height:4px; border-radius:50%;
+      background:var(--line); display:inline-block; transform:translateY(-1px);
     }
 
-    @page { size: 297mm 167mm; margin: 0; }
+    /* ══════════════════════════════════════════
+       СЛАЙД 2 — Техподдержка
+    ══════════════════════════════════════════ */
+    .slide--support .content{ gap:10px; }
+    .slide--support .title--m{ font-size:48px; }
+    .slide--support .subtitle{ font-size:20px; }
+    .slide--support .card{ padding:12px 14px; }
+    .slide--support li{ font-size:15px; margin:4px 0; }
+
+    /* ══════════════════════════════════════════
+       СЛАЙД 6 — Команда
+    ══════════════════════════════════════════ */
+    .slide--team .content{ gap:10px; }
+    .slide--team .title--m{ font-size:50px; }
+    .slide--team .subtitle{ font-size:21px; }
+    .slide--team .card{ padding:14px 16px; }
+    .slide--team .step{ padding:9px 11px; gap:9px; }
+    .slide--team .step p{ font-size:15px; }
+    .slide--team .num{ width:32px; height:32px; flex:0 0 32px; font-size:13px; border-radius:9px; }
+    .slide--team .num--wide{ font-size:10px; }
+
+    /* ══════════════════════════════════════════
+       СЛАЙД 8 — Портал Масла
+    ══════════════════════════════════════════ */
+    .slide--oils .content{ gap:10px; }
+    .slide--oils .title--m{ font-size:50px; }
+    .slide--oils .subtitle{ font-size:21px; }
+    .slide--oils .card{ padding:12px 14px; }
+    .slide--oils .card h3{ font-size:17px; margin-bottom:8px; }
+    .slide--oils .step{ padding:9px 11px; gap:9px; }
+    .slide--oils .step p{ font-size:15px; }
+    .slide--oils .step-desc{ font-size:13px; margin-top:3px; }
+    .slide--oils .num{ width:32px; height:32px; flex:0 0 32px; font-size:13px; border-radius:9px; }
+
+    /* ══════════════════════════════════════════
+       СЛАЙД 9 — Подписка
+    ══════════════════════════════════════════ */
+    .slide--subscription .header{ padding-top:20px; }
+    .slide--subscription .content{ gap:7px; padding-top:8px; padding-bottom:44px; }
+    .slide--subscription .title--m{ font-size:48px; line-height:1.02; }
+    .slide--subscription .subtitle{ font-size:20px; line-height:1.26; }
+    .slide--subscription .grid-2{ margin-top:6px; gap:12px; }
+    .slide--subscription .card{ padding:10px 14px; height:auto; }
+    .slide--subscription .card h3{ font-size:16px; margin-bottom:7px; }
+    .slide--subscription .steps{ margin-top:5px; gap:5px; }
+    .slide--subscription .step{ padding:7px 10px; border-radius:12px; gap:9px; }
+    .slide--subscription .num{ width:30px; height:30px; flex:0 0 30px; border-radius:9px; font-size:12px; }
+    .slide--subscription .step p{ font-size:14px; line-height:1.18; }
+    .slide--subscription .step-desc{ font-size:12.5px; line-height:1.2; margin-top:3px; }
+
+    /* карточка Срок реализации — такая же как на слайде 8 */
+    .slide--subscription .card--term{
+      align-self:start;
+      padding:14px 16px;
+      height:auto;
+    }
+    .slide--subscription .card--term h3{ font-size:18px; margin-bottom:10px; }
+    .slide--subscription .card--term .note{ font-size:14px; line-height:1.4; margin-top:8px; }
+
+    /* ══════════════════════════════════════════
+       ПЕЧАТЬ
+    ══════════════════════════════════════════ */
+    @page{ size:297mm 167mm; margin:0; }
+
     @media print{
-      body{ background:#fff; }
-      .deck{ padding:0; gap:0; }
+      html, body{ width:297mm; height:167mm; background:#fff; }
+
+      .deck{ padding:0; gap:0; background:#fff; }
+
       .slide{
-        width:297mm;
-        height:167mm;
+        width:297mm !important;
+        height:167mm !important;
         border-radius:0;
         box-shadow:none;
+        overflow:hidden;
+        position:relative;
+        /* гарантируем, что каждый слайд — отдельная страница */
+        page-break-after:always;
+        page-break-inside:avoid;
+        display:block;
       }
-      .header{ padding:12mm 16mm 0 16mm; }
-      .content{ padding:6mm 16mm 14mm 16mm; height:auto; }
-      .footer{ left:16mm; right:16mm; bottom:7mm; }
 
-      .slide--subscription .header{ padding-top:7mm; }
-      .slide--subscription .content{ padding-top:3mm; padding-bottom:10mm; }
+      .header{
+        padding:9mm 14mm 0 14mm !important;
+      }
+
+      .content{
+        padding:4mm 14mm 12mm 14mm !important;
+        height:calc(167mm - 22mm) !important; /* 167 − шапка ~22mm */
+        overflow:hidden !important;
+        display:flex;
+        flex-direction:column;
+      }
+
+      .footer{
+        left:14mm !important;
+        right:14mm !important;
+        bottom:6mm !important;
+        font-size:11px;
+      }
+
+      /* Слайд 2 */
+      .slide--support .content{ gap:6px !important; }
+      .slide--support .title--m{ font-size:38pt !important; }
+      .slide--support .subtitle{ font-size:15pt !important; }
+      .slide--support li{ font-size:11pt !important; margin:3px 0 !important; }
+      .slide--support .card{ padding:8px 10px !important; }
+
+      /* Слайд 6 */
+      .slide--team .content{ gap:6px !important; }
+      .slide--team .title--m{ font-size:40pt !important; }
+      .slide--team .subtitle{ font-size:15pt !important; }
+      .slide--team .step{ padding:7px 9px !important; }
+      .slide--team .step p{ font-size:11pt !important; }
+      .slide--team .num{ width:28px !important; height:28px !important; flex-basis:28px !important; font-size:10pt !important; }
+
+      /* Слайд 8 */
+      .slide--oils .content{ gap:6px !important; }
+      .slide--oils .title--m{ font-size:40pt !important; }
+      .slide--oils .subtitle{ font-size:15pt !important; }
+      .slide--oils .step p{ font-size:11pt !important; }
+      .slide--oils .step-desc{ font-size:10pt !important; }
+      .slide--oils .card{ padding:8px 10px !important; }
+
+      /* Слайд 9 */
+      .slide--subscription .header{ padding-top:7mm !important; }
+      .slide--subscription .content{
+        padding-top:3mm !important;
+        padding-bottom:10mm !important;
+        gap:5px !important;
+      }
+      .slide--subscription .title--m{ font-size:38pt !important; }
+      .slide--subscription .subtitle{ font-size:14pt !important; }
+      .slide--subscription .step p{ font-size:10.5pt !important; }
+      .slide--subscription .step-desc{ font-size:9.5pt !important; }
+      .slide--subscription .card{ padding:7px 10px !important; }
+      .slide--subscription .card--term{ padding:10px 12px !important; }
+      .slide--subscription .card--term h3{ font-size:14pt !important; }
     }
   </style>
 </head>
@@ -407,14 +343,12 @@
         <span class="pill">Коммерческое предложение</span>
       </div>
     </div>
-
     <div class="content" style="justify-content:center;">
       <h1 class="title">Коммерческое<br>предложение</h1>
       <p class="subtitle">
         Поддержка, развитие и сопровождение цифровых продуктов: сайт, мобильное приложение, портал DNM
       </p>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -422,7 +356,7 @@
   </section>
 
   <!-- 2. Техподдержка -->
-  <section class="slide slide--dense">
+  <section class="slide slide--support">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
@@ -432,13 +366,11 @@
         <span class="pill">Поддержка и развитие</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Техническая поддержка — полный спектр услуг</h2>
       <p class="subtitle">
-        Техническая поддержка сайта, мобильного приложение, портала DNM, развитие текущего функционала и разработка нового
+        Техническая поддержка сайта, мобильного приложения, портала DNM, развитие текущего функционала и разработка нового
       </p>
-
       <div class="grid-2">
         <div class="card">
           <h3>Эксплуатация и стабильность</h3>
@@ -453,7 +385,6 @@
             <li>реагирование на инциденты, влияющие на работоспособность сайта</li>
           </ul>
         </div>
-
         <div class="card">
           <h3>Контент, SEO и развитие</h3>
           <ul>
@@ -463,15 +394,12 @@
             <li>SEO‑задачи</li>
             <li>модернизация существующих и создание новых страниц сайта</li>
             <li>разработка нового и корректировка текущего функционала</li>
-            <li>
-              внесение изменений по запросам (аналитика, проектирование, дизайн, верстка, программирование,
-              создание и редактирование текстов, наполнение контентом, тестирование, IT‑работы)
-            </li>
+            <li>внесение изменений по запросам (аналитика, проектирование, дизайн, верстка, программирование,
+              создание и редактирование текстов, наполнение контентом, тестирование, IT‑работы)</li>
           </ul>
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -490,14 +418,12 @@
         <span class="pill">Логи</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Логирование и мониторинг сайтов</h2>
       <p class="subtitle">
         Ведем журналы действий и осуществляем автоматический мониторинг доступности сайтов через систему Zabbix
         для своевременного обнаружения и быстрого реагирования на инциденты.
       </p>
-
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>Что делаем</h3>
@@ -517,7 +443,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -536,14 +461,12 @@
         <span class="pill">Best practices</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Защита от атак</h2>
       <p class="subtitle">
         Против распространенных атак используем SQL‑инъекции, XSS, CSRF (межсайтовую подделку запроса).
         Для настройки встроенных механизмов защиты — библиотеки и фреймворки.
       </p>
-
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>Подход</h3>
@@ -563,7 +486,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -582,14 +504,12 @@
         <span class="pill">Отчётность</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Прозрачность процессов</h2>
       <p class="subtitle">
         Добавляем клиентов в систему управления проектами — можно следить за ходом выполнения задач
         (текущим статусом, временем на исполнение и т.д.).
       </p>
-
       <div class="grid-2" style="margin-top:16px;">
         <div class="card">
           <h3>В системе доступны</h3>
@@ -610,7 +530,6 @@
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -618,7 +537,7 @@
   </section>
 
   <!-- 6. Команда -->
-  <section class="slide">
+  <section class="slide slide--team">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
@@ -628,30 +547,25 @@
         <span class="pill">Команда</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Команда</h2>
       <p class="subtitle">
         Изучаем бизнес клиента и предлагаем уникальные решения. Все сотрудники, необходимые для поддержки и развития сайтов, работают у нас в штате.
       </p>
-
-      <div class="card" style="margin-top:16px;">
-        <div class="steps" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="card" style="margin-top:10px;">
+        <div class="steps" style="grid-template-columns:repeat(3,1fr); gap:8px;">
           <div class="step"><div class="num">UX</div><p><b>UX‑аналитика</b><br><span class="muted">исследования, сценарии, прототипы</span></p></div>
           <div class="step"><div class="num">UI</div><p><b>Дизайн</b><br><span class="muted">интерфейсы, дизайн‑система</span></p></div>
           <div class="step"><div class="num num--wide">DevOps</div><p><b>DevOps</b><br><span class="muted">окружения, инфраструктура, эксплуатация</span></p></div>
-
           <div class="step"><div class="num">FE</div><p><b>Front‑end</b><br><span class="muted">верстка, компоненты</span></p></div>
           <div class="step"><div class="num">BE</div><p><b>Back‑end</b><br><span class="muted">API, БД, логика</span></p></div>
           <div class="step"><div class="num">QA</div><p><b>QA</b><br><span class="muted">тестирование, регресс, приемка</span></p></div>
-
           <div class="step"><div class="num">SEO</div><p><b>SEO</b><br><span class="muted">техзадачи, оптимизация</span></p></div>
           <div class="step"><div class="num">CM</div><p><b>Контент‑менеджер</b><br><span class="muted">публикации, каталог</span></p></div>
           <div class="step"><div class="num">PM</div><p><b>PM</b><br><span class="muted">план, SLA, коммуникации</span></p></div>
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -670,10 +584,8 @@
         <span class="pill">Wiki</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Процесс работы SLA</h2>
-
       <div class="steps">
         <div class="step"><div class="num">01</div><p>Получаем обращение от клиента</p></div>
         <div class="step"><div class="num">02</div><p>Обрабатываем заявку за фиксированное время согласно уровню SLA</p></div>
@@ -681,10 +593,9 @@
         <div class="step"><div class="num">04</div><p>Контролируем деплой работ на продуктив QA‑отделом</p></div>
         <div class="step"><div class="num">05</div><p>Ведем документацию в Wiki‑системе</p></div>
         <div class="step"><div class="num">06</div><p>Передаем результат на приемку клиенту</p></div>
-        <div class="step" style="grid-column: 1 / span 2;"><div class="num">07</div><p>Составляем отчет по итогам выполненных работ</p></div>
+        <div class="step" style="grid-column:1/span 2;"><div class="num">07</div><p>Составляем отчет по итогам выполненных работ</p></div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -692,7 +603,7 @@
   </section>
 
   <!-- 8. Портал "Масла" -->
-  <section class="slide slide--compact">
+  <section class="slide slide--oils">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
@@ -702,14 +613,12 @@
         <span class="pill">SLA</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Портал "Масла"</h2>
       <p class="subtitle">
         Внедрение функционала заказа моторных масел дилерскими центрами внутри портала DNM
       </p>
-
-      <div class="grid-2" style="margin-top:14px;">
+      <div class="grid-2" style="margin-top:10px;">
         <div class="card">
           <h3>Этапы</h3>
           <div class="steps steps--1col">
@@ -718,7 +627,7 @@
               <p>
                 <b>Аналитика</b>
                 <span class="step-desc">
-                  Моделирование основных процессов, проработка пользовательских сценариев,<br>
+                  Моделирование основных процессов, проработка пользовательских сценариев,
                   описание пользовательских интерфейсов, моделирование архитектуры решения
                 </span>
               </p>
@@ -743,20 +652,15 @@
             </div>
           </div>
         </div>
-
-        <!-- ↓ h3 и текст изменены -->
         <div class="card">
           <h3>Срок реализации</h3>
-          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">
-            5 месяцев
-          </p>
+          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">5 месяцев</p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
@@ -775,14 +679,12 @@
         <span class="pill">Сайт + МП</span>
       </div>
     </div>
-
     <div class="content">
       <h2 class="title title--m">Механизм управления подпиской</h2>
       <p class="subtitle">
         Внедрение функционала механизма управления подпиской пользователей на сайте kia.ru и в мобильном приложении Kia Russia,
         а также создание email-рассыльщика в административной панели.
       </p>
-
       <div class="grid-2">
         <div class="card">
           <h3>Этапы</h3>
@@ -797,7 +699,6 @@
                 </span>
               </p>
             </div>
-
             <div class="step">
               <div class="num">02</div>
               <p>
@@ -808,7 +709,6 @@
                 </span>
               </p>
             </div>
-
             <div class="step">
               <div class="num">03</div>
               <p>
@@ -818,7 +718,6 @@
                 </span>
               </p>
             </div>
-
             <div class="step">
               <div class="num">04</div>
               <p>
@@ -828,7 +727,6 @@
                 </span>
               </p>
             </div>
-
             <div class="step">
               <div class="num">05</div>
               <p>
@@ -840,20 +738,15 @@
             </div>
           </div>
         </div>
-
-        <!-- ↓ h3 и текст изменены; стили карточки сброшены через .card--term -->
         <div class="card card--term">
           <h3>Срок реализации</h3>
-          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">
-            3 месяца
-          </p>
+          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:500;">3 месяца</p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
         </div>
       </div>
     </div>
-
     <div class="footer">
       <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
       <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
