@@ -48,7 +48,6 @@
       align-items:center;
     }
 
-    /* ── Слайд-контейнер ── */
     .slide{
       width:var(--slide-w);
       height:var(--slide-h);
@@ -71,7 +70,6 @@
       pointer-events:none;
     }
 
-    /* ── Шапка ── */
     .header{
       padding:28px 56px 0 56px;
       display:flex;
@@ -93,7 +91,6 @@
       line-height:1; white-space:nowrap; font-weight:400;
     }
 
-    /* ── Контент ── */
     .content{
       padding:12px 56px 48px 56px;
       display:flex;
@@ -101,7 +98,6 @@
       gap:12px;
       position:relative;
       z-index:2;
-      /* высота = слайд − шапка (~72px) */
       height:calc(var(--slide-h) - 72px);
       overflow:hidden;
     }
@@ -171,7 +167,6 @@
 
     .muted{ color:var(--muted); }
 
-    /* ── Футер ── */
     .footer{
       position:absolute;
       left:56px; right:56px; bottom:20px;
@@ -195,6 +190,10 @@
     .slide--support .subtitle{ font-size:20px; }
     .slide--support .card{ padding:12px 14px; }
     .slide--support li{ font-size:15px; margin:4px 0; }
+
+    /* ↓ ключевое исправление: карточки одинаковой высоты */
+    .slide--support .grid-2{ align-items:stretch; }
+    .slide--support .card{ height:100%; }
 
     /* ══════════════════════════════════════════
        СЛАЙД 6 — Команда
@@ -237,7 +236,6 @@
     .slide--subscription .step p{ font-size:14px; line-height:1.18; }
     .slide--subscription .step-desc{ font-size:12.5px; line-height:1.2; margin-top:3px; }
 
-    /* карточка Срок реализации — такая же как на слайде 8 */
     .slide--subscription .card--term{
       align-self:start;
       padding:14px 16px;
@@ -263,29 +261,24 @@
         box-shadow:none;
         overflow:hidden;
         position:relative;
-        /* гарантируем, что каждый слайд — отдельная страница */
         page-break-after:always;
         page-break-inside:avoid;
         display:block;
       }
 
-      .header{
-        padding:9mm 14mm 0 14mm !important;
-      }
+      .header{ padding:9mm 14mm 0 14mm !important; }
 
       .content{
         padding:4mm 14mm 12mm 14mm !important;
-        height:calc(167mm - 22mm) !important; /* 167 − шапка ~22mm */
+        height:calc(167mm - 22mm) !important;
         overflow:hidden !important;
         display:flex;
         flex-direction:column;
       }
 
       .footer{
-        left:14mm !important;
-        right:14mm !important;
-        bottom:6mm !important;
-        font-size:11px;
+        left:14mm !important; right:14mm !important;
+        bottom:6mm !important; font-size:11px;
       }
 
       /* Слайд 2 */
@@ -294,6 +287,9 @@
       .slide--support .subtitle{ font-size:15pt !important; }
       .slide--support li{ font-size:11pt !important; margin:3px 0 !important; }
       .slide--support .card{ padding:8px 10px !important; }
+      /* карточки одинаковой высоты — и в печати */
+      .slide--support .grid-2{ align-items:stretch !important; }
+      .slide--support .card{ height:100% !important; }
 
       /* Слайд 6 */
       .slide--team .content{ gap:6px !important; }
