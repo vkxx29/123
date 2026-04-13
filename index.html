@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>UPLAB — Доп. слайды (после стр. 9, без нумерации)</title>
 
-  <!-- TT Commons (локальные файлы в репозитории)
-       /fonts/TTCommons-Regular.ttf
-       /fonts/TTCommons-Medium.ttf -->
   <style>
     @font-face{
       font-family:"TT Commons";
@@ -36,7 +33,7 @@
       --accent:#0B59FF;
       --accent2:#00C2B1;
 
-      --slide-w:1366px; /* 16:9 */
+      --slide-w:1366px;
       --slide-h:768px;
       --r:18px;
     }
@@ -227,7 +224,6 @@
       font-size:16px;
       line-height:1;
     }
-    /* для длинных подписей в квадрате */
     .num--wide{
       font-size:12px;
       letter-spacing:-.01em;
@@ -262,31 +258,90 @@
     .slide--compact .step p{ font-size:18px; }
     .slide--compact .step-desc{ font-size:15px; margin-top:5px; }
 
-    .slide--subscription .content{
-      padding:10px 56px 44px 56px;
-      gap:10px;
+    /* ===== ПЕРЕРАБОТАННЫЕ СТИЛИ ПОСЛЕДНЕГО СЛАЙДА ===== */
+    .slide--subscription .header{
+      padding:22px 56px 0 56px;
     }
-    .slide--subscription .title--m{ font-size:52px; }
-    .slide--subscription .subtitle{ font-size:23px; line-height:1.32; }
-    .slide--subscription .grid-2{ margin-top:10px; }
-    .slide--subscription .card{ padding:14px 16px; }
-    .slide--subscription .card h3{ margin-bottom:10px; font-size:18px; }
 
-    .slide--subscription .steps{ margin-top:8px; gap:8px; }
+    .slide--subscription .content{
+      padding:8px 56px 36px 56px;
+      gap:6px;
+      height:calc(var(--slide-h) - 80px);
+      overflow:hidden;
+    }
+
+    .slide--subscription .title--m{
+      font-size:44px;
+      line-height:1.05;
+    }
+
+    .slide--subscription .subtitle{
+      font-size:19px;
+      line-height:1.28;
+    }
+
+    .slide--subscription .grid-2{
+      margin-top:6px;
+      gap:12px;
+      align-items:start;
+      flex:1 1 auto;
+      min-height:0;
+    }
+
+    .slide--subscription .card{
+      padding:10px 14px;
+      overflow:hidden;
+    }
+
+    .slide--subscription .card h3{
+      margin-bottom:6px;
+      font-size:16px;
+    }
+
+    .slide--subscription .steps{
+      margin-top:4px;
+      gap:5px;
+    }
+
     .slide--subscription .step{
-      padding:10px 12px;
-      border-radius:14px;
-      gap:10px;
+      padding:6px 10px;
+      border-radius:12px;
+      gap:8px;
     }
+
     .slide--subscription .num{
-      width:34px; height:34px; flex-basis:34px;
-      border-radius:11px;
-      font-size:14px;
+      width:30px;
+      height:30px;
+      flex-basis:30px;
+      border-radius:9px;
+      font-size:12px;
     }
-    .slide--subscription .num--wide{ font-size:10.5px; }
-    .slide--subscription .step p{ font-size:16px; line-height:1.18; }
-    .slide--subscription .step-desc{ font-size:13px; line-height:1.18; margin-top:4px; }
-    .slide--subscription .note{ font-size:13px; margin-top:8px; }
+
+    .slide--subscription .num--wide{
+      font-size:9px;
+    }
+
+    .slide--subscription .step p{
+      font-size:14px;
+      line-height:1.15;
+    }
+
+    .slide--subscription .step-desc{
+      font-size:11.5px;
+      line-height:1.15;
+      margin-top:2px;
+    }
+
+    .slide--subscription .note{
+      font-size:12px;
+      margin-top:6px;
+      line-height:1.3;
+    }
+
+    .slide--subscription .card--term p{
+      font-size:22px !important;
+    }
+    /* ===== КОНЕЦ ПЕРЕРАБОТАННЫХ СТИЛЕЙ ===== */
 
     .footer{
       position:absolute;
@@ -310,7 +365,7 @@
       transform:translateY(-1px);
     }
 
-    @page { size: 297mm 167mm; margin: 0; } /* 16:9 */
+    @page { size: 297mm 167mm; margin: 0; }
     @media print{
       body{ background:#fff; }
       .deck{ padding:0; gap:0; }
@@ -323,7 +378,13 @@
       .header{ padding:12mm 16mm 0 16mm; }
       .content{ padding:6mm 16mm 14mm 16mm; height:auto; }
       .footer{ left:16mm; right:16mm; bottom:7mm; }
-      .slide--subscription .content{ padding:5mm 16mm 12mm 16mm; }
+
+      .slide--subscription .header{ padding:8mm 16mm 0 16mm; }
+      .slide--subscription .content{
+        padding:3mm 16mm 10mm 16mm;
+        height:auto;
+        overflow:hidden;
+      }
     }
   </style>
 </head>
@@ -560,7 +621,6 @@
         <div class="desc">In‑house команда</div>
       </div>
       <div class="tag">
-        <!-- убрали овалы "Кросс‑функционально" и "В штате" и заменили на "Команда" -->
         <span class="pill">Команда</span>
       </div>
     </div>
@@ -698,7 +758,7 @@
     </div>
   </section>
 
-  <!-- 9. Механизм управления подпиской -->
+  <!-- 9. Механизм управления подпиской — ИСПРАВЛЕННЫЙ -->
   <section class="slide slide--mist slide--subscription">
     <div class="header">
       <div class="brand">
@@ -727,8 +787,7 @@
               <p>
                 <b>Аналитика и проектирование</b>
                 <span class="step-desc">
-                  Моделирование основных процессов, проработка пользовательских сценариев, описание пользовательских интерфейсов,
-                  моделирование архитектуры решения
+                  Моделирование процессов, сценарии, интерфейсы, архитектура решения
                 </span>
               </p>
             </div>
@@ -738,8 +797,7 @@
               <p>
                 <b>Реализация сайт</b>
                 <span class="step-desc">
-                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете,
-                  Доработка интеграции с CRM, Административная система с управлением рассылками
+                  Формы подписки, ЛК, интеграция с CRM, админ-система рассылок
                 </span>
               </p>
             </div>
@@ -749,7 +807,7 @@
               <p>
                 <b>Внедрение сайт</b>
                 <span class="step-desc">
-                  Проверка работы разделов перед релизом и релиз на prod среду
+                  Проверка и релиз на prod
                 </span>
               </p>
             </div>
@@ -759,7 +817,7 @@
               <p>
                 <b>Реализация МП</b>
                 <span class="step-desc">
-                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете
+                  Формы подписки на новости и в ЛК
                 </span>
               </p>
             </div>
@@ -769,16 +827,16 @@
               <p>
                 <b>Внедрение МП</b>
                 <span class="step-desc">
-                  Проверка работы разделов перед релизом и релиз на prod среду
+                  Проверка и релиз на prod
                 </span>
               </p>
             </div>
           </div>
         </div>
 
-        <div class="card">
+        <div class="card card--term" style="align-self:start;">
           <h3>Срок</h3>
-          <p style="margin:0;font-size:26px;line-height:1.2;font-weight:400;">
+          <p style="margin:0;font-size:22px;line-height:1.2;font-weight:400;">
             <b style="font-weight:500;">Срок реализации — 3 месяца</b>
           </p>
           <div class="note">
@@ -797,4 +855,3 @@
 </main>
 </body>
 </html>
-```
