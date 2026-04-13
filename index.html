@@ -190,10 +190,14 @@
     .slide--support .subtitle{ font-size:20px; }
     .slide--support .card{ padding:12px 14px; }
     .slide--support li{ font-size:15px; margin:4px 0; }
-
-    /* ↓ ключевое исправление: карточки одинаковой высоты */
     .slide--support .grid-2{ align-items:stretch; }
     .slide--support .card{ height:100%; }
+
+    /* ══════════════════════════════════════════
+       СЛАЙД 5 — Прозрачность процессов
+    ══════════════════════════════════════════ */
+    .slide--transparency .grid-2{ align-items:stretch; }
+    .slide--transparency .card{ height:100%; }
 
     /* ══════════════════════════════════════════
        СЛАЙД 6 — Команда
@@ -287,9 +291,12 @@
       .slide--support .subtitle{ font-size:15pt !important; }
       .slide--support li{ font-size:11pt !important; margin:3px 0 !important; }
       .slide--support .card{ padding:8px 10px !important; }
-      /* карточки одинаковой высоты — и в печати */
       .slide--support .grid-2{ align-items:stretch !important; }
       .slide--support .card{ height:100% !important; }
+
+      /* Слайд 5 */
+      .slide--transparency .grid-2{ align-items:stretch !important; }
+      .slide--transparency .card{ height:100% !important; }
 
       /* Слайд 6 */
       .slide--team .content{ gap:6px !important; }
@@ -488,8 +495,8 @@
     </div>
   </section>
 
-  <!-- 5. Прозрачность процессов -->
-  <section class="slide slide--mist">
+  <!-- 5. Прозрачность процессов — добавлен класс slide--transparency -->
+  <section class="slide slide--mist slide--transparency">
     <div class="header">
       <div class="brand">
         <div class="name">UPLAB</div>
