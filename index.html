@@ -1,108 +1,1116 @@
-<!-- ═══ СЛАЙД: Приёмка проекта ═══ -->
-<section class="slide slide--mist">
-  <div class="header">
-    <div class="brand">
-      <div class="name">UPLAB</div>
-      <div class="desc">План перехода</div>
-    </div>
-    <div class="tag">
-      <span class="pill">Приёмка</span>
-      <span class="pill">3–4 месяца</span>
-    </div>
-  </div>
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>UPLAB — Слайды FHD</title>
 
-  <div class="content">
-    <h2 class="title title--m">Приёмка проекта<br>от текущего подрядчика</h2>
-    <p class="subtitle">
-      Плавный и контролируемый переход без простоев и потери данных.
-      Каждый этап завершается фиксацией результатов и согласованием с клиентом.
-    </p>
+  <style>
+    @font-face{
+      font-family:"TT Commons";
+      src: url("./fonts/TTCommons-Regular.ttf") format("truetype");
+      font-weight:400; font-style:normal; font-display:swap;
+    }
+    @font-face{
+      font-family:"TT Commons";
+      src: url("./fonts/TTCommons-Medium.ttf") format("truetype");
+      font-weight:500; font-style:normal; font-display:swap;
+    }
+  </style>
 
-    <div class="grid-2" style="margin-top:20px;">
+  <style>
+    :root{
+      --bg:#ffffff;
+      --text:#0B0F1A;
+      --muted:#6B7280;
+      --line:#E6EAF2;
+      --soft:#F5F7FB;
+      --accent:#0B59FF;
+      --slide-w:1920px;
+      --slide-h:1080px;
+      --r:25px;
+    }
 
-      <!-- Левая колонка — этапы -->
-      <div class="card" style="padding:24px 26px;">
-        <h3>Этапы перехода</h3>
-        <div class="steps steps--1col" style="margin-top:10px; gap:10px;">
+    *{ box-sizing:border-box; }
 
-          <div class="step" style="padding:14px 17px;">
-            <div class="num">01</div>
-            <p>
-              <b>Аудит и передача доступов</b>
-              <span class="step-desc">
-                Получение кодовой базы, доступов к серверам, репозиториям, CMS и интеграциям.
-                Инвентаризация инфраструктуры и документации.
-              </span>
-            </p>
-          </div>
+    body{
+      margin:0;
+      font-family:"TT Commons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:400;
+      color:var(--text);
+      background:#0f172a;
+    }
 
-          <div class="step" style="padding:14px 17px;">
-            <div class="num">02</div>
-            <p>
-              <b>Техническое обследование</b>
-              <span class="step-desc">
-                Анализ архитектуры, качества кода, CI/CD, производительности.
-                Выявление рисков и технического долга.
-              </span>
-            </p>
-          </div>
+    .deck{
+      display:flex;
+      flex-direction:column;
+      gap:40px;
+      padding:40px;
+      align-items:center;
+    }
 
-          <div class="step" style="padding:14px 17px;">
-            <div class="num">03</div>
-            <p>
-              <b>Параллельная работа</b>
-              <span class="step-desc">
-                Совместное сопровождение с текущим подрядчиком.
-                Передача экспертизы, погружение команды, тестовые задачи.
-              </span>
-            </p>
-          </div>
+    .slide{
+      width:var(--slide-w);
+      height:var(--slide-h);
+      background:var(--bg);
+      border-radius:30px;
+      box-shadow:0 36px 120px rgba(0,0,0,.35);
+      overflow:hidden;
+      position:relative;
+      page-break-after:always;
+      page-break-inside:avoid;
+    }
 
-          <div class="step" style="padding:14px 17px;">
-            <div class="num">04</div>
-            <p>
-              <b>Полный переход</b>
-              <span class="step-desc">
-                UPLAB принимает проект на полное сопровождение.
-                Настройка мониторинга, SLA, регламентов и отчётности.
-              </span>
-            </p>
-          </div>
+    .slide--mist::after{
+      content:"";
+      position:absolute;
+      inset:-170px -170px auto auto;
+      width:1072px; height:733px;
+      background:radial-gradient(closest-side,rgba(11,89,255,.16),rgba(0,194,177,.08) 45%,rgba(255,255,255,0) 70%);
+      transform:rotate(8deg);
+      pointer-events:none;
+    }
 
-        </div>
+    /* ── Шапка ── */
+    .header{
+      padding:40px 79px 0 79px;
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:22px;
+      position:relative;
+      z-index:2;
+      flex-shrink:0;
+    }
+    .brand{ display:flex; flex-direction:column; gap:6px; }
+    .brand .name{ font-weight:500; letter-spacing:.04em; font-size:24px; }
+    .brand .desc{ font-size:24px; color:var(--muted); line-height:1.3; max-width:1300px; }
+
+    .tag{ display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; }
+    .pill{
+      border:1px solid var(--line); background:#fff; color:var(--muted);
+      border-radius:999px; padding:13px 20px; font-size:18px;
+      line-height:1; white-space:nowrap; font-weight:400;
+    }
+
+    /* ── Контент ── */
+    .content{
+      padding:17px 79px 68px 79px;
+      display:flex;
+      flex-direction:column;
+      gap:17px;
+      position:relative;
+      z-index:2;
+      height:calc(var(--slide-h) - 102px);
+      overflow:hidden;
+    }
+
+    h1,h2,h3,h4{ margin:0; }
+    .title{ font-size:96px; line-height:1.01; letter-spacing:-.02em; font-weight:500; }
+    .title--m{ font-size:76px; line-height:1.03; }
+
+    .subtitle{
+      margin:0; font-size:34px; line-height:1.3;
+      color:var(--muted); max-width:1660px; font-weight:400;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+      align-items:start;
+      margin-top:8px;
+      min-height:0;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:20px;
+      align-items:stretch;
+      margin-top:8px;
+      min-height:0;
+    }
+
+    .card{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:20px 22px;
+      min-height:0;
+    }
+    .card h3{ font-size:25px; font-weight:500; margin:0 0 14px 0; }
+
+    ul{ margin:0; padding-left:22px; }
+    li{ margin:7px 0; line-height:1.22; font-size:22px; font-weight:400; }
+
+    .note{ color:var(--muted); font-size:20px; line-height:1.4; margin-top:12px; }
+
+    .steps{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:11px 17px;
+      margin-top:11px;
+    }
+    .steps--1col{ grid-template-columns:1fr; }
+    .steps--3col{ grid-template-columns:1fr 1fr 1fr; }
+
+    .step{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:14px 17px;
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      min-width:0;
+    }
+    .num{
+      width:48px; height:48px; border-radius:14px;
+      background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
+      color:var(--accent); font-weight:500;
+      display:flex; align-items:center; justify-content:center;
+      flex:0 0 48px; font-size:20px; line-height:1;
+    }
+    .num--wide{ font-size:15px; letter-spacing:-.01em; padding:0 4px; text-align:center; line-height:1.05; }
+
+    .step p{ margin:0; line-height:1.2; font-size:22px; font-weight:400; }
+    .step p b{ font-weight:500; }
+    .step-desc{ display:block; margin-top:5px; font-size:19px; line-height:1.22; color:var(--muted); }
+
+    .muted{ color:var(--muted); }
+
+    /* ── Счётчики ── */
+    .stats{
+      display:flex;
+      gap:56px;
+      margin-top:20px;
+    }
+    .stat{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .stat-value{
+      font-size:86px;
+      font-weight:500;
+      line-height:1;
+      letter-spacing:-.02em;
+      background:linear-gradient(135deg, var(--accent), #00C2B1);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
+    }
+    .stat-label{
+      font-size:24px;
+      color:var(--muted);
+      line-height:1.25;
+      font-weight:400;
+    }
+
+    /* ── Преимущества ── */
+    .advantage-card{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:var(--r);
+      padding:32px 28px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .advantage-card h3{
+      font-size:30px;
+      font-weight:500;
+      margin:0;
+    }
+    .advantage-card p{
+      margin:0;
+      font-size:23px;
+      line-height:1.35;
+      color:var(--muted);
+      font-weight:400;
+    }
+    .advantage-icon{
+      width:56px; height:56px; border-radius:16px;
+      background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
+      color:var(--accent);
+      display:flex; align-items:center; justify-content:center;
+      font-size:24px; font-weight:500;
+      flex-shrink:0;
+    }
+
+    /* ── Кейсы ── */
+    .cases{
+      display:grid;
+      grid-template-columns:1fr 1fr 1fr;
+      gap:14px;
+      margin-top:12px;
+    }
+    .case{
+      background:var(--soft);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:20px 22px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .case h4{
+      margin:0;
+      font-size:22px;
+      font-weight:500;
+      line-height:1.2;
+    }
+    .case p{
+      margin:0;
+      font-size:18px;
+      line-height:1.3;
+      color:var(--muted);
+      font-weight:400;
+    }
+    .case-tag{
+      display:inline-block;
+      background:linear-gradient(135deg,rgba(11,89,255,.08),rgba(0,194,177,.06));
+      color:var(--accent);
+      border-radius:8px;
+      padding:5px 10px;
+      font-size:14px;
+      font-weight:500;
+      line-height:1;
+      align-self:flex-start;
+    }
+
+    /* ── Футер ── */
+    .footer{
+      position:absolute;
+      left:79px; right:79px; bottom:28px;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+      gap:17px;
+      color:var(--muted); font-size:18px;
+      z-index:2; flex-wrap:wrap; font-weight:400;
+    }
+    .dot{
+      width:6px; height:6px; border-radius:50%;
+      background:var(--line); display:inline-block; transform:translateY(-1px);
+    }
+
+    /* ══ Слайды с модификаторами ══ */
+    .slide--support .content{ gap:14px; }
+    .slide--support .title--m{ font-size:68px; }
+    .slide--support .subtitle{ font-size:28px; }
+    .slide--support .card{ padding:17px 20px; }
+    .slide--support li{ font-size:21px; margin:6px 0; }
+    .slide--support .grid-2{ align-items:stretch; }
+    .slide--support .card{ height:100%; }
+
+    .slide--transparency .grid-2{ align-items:stretch; }
+    .slide--transparency .card{ height:100%; }
+
+    .slide--team .content{ gap:14px; }
+    .slide--team .title--m{ font-size:70px; }
+    .slide--team .subtitle{ font-size:30px; }
+    .slide--team .card{ padding:20px 22px; }
+    .slide--team .step{ padding:13px 16px; gap:13px; }
+    .slide--team .step p{ font-size:21px; }
+    .slide--team .num{ width:45px; height:45px; flex:0 0 45px; font-size:18px; border-radius:13px; }
+    .slide--team .num--wide{ font-size:14px; }
+
+    .slide--oils .content{ gap:14px; }
+    .slide--oils .title--m{ font-size:70px; }
+    .slide--oils .subtitle{ font-size:30px; }
+    .slide--oils .card{ padding:17px 20px; }
+    .slide--oils .card h3{ font-size:24px; margin-bottom:11px; }
+    .slide--oils .step{ padding:13px 16px; gap:13px; }
+    .slide--oils .step p{ font-size:21px; }
+    .slide--oils .step-desc{ font-size:18px; margin-top:4px; }
+    .slide--oils .num{ width:45px; height:45px; flex:0 0 45px; font-size:18px; border-radius:13px; }
+
+    .slide--subscription .header{ padding-top:28px; }
+    .slide--subscription .content{ gap:10px; padding-top:11px; padding-bottom:62px; }
+    .slide--subscription .title--m{ font-size:68px; line-height:1.02; }
+    .slide--subscription .subtitle{ font-size:28px; line-height:1.26; }
+    .slide--subscription .grid-2{ margin-top:8px; gap:17px; }
+    .slide--subscription .card{ padding:14px 20px; height:auto; }
+    .slide--subscription .card h3{ font-size:22px; margin-bottom:10px; }
+    .slide--subscription .steps{ margin-top:7px; gap:7px; }
+    .slide--subscription .step{ padding:10px 14px; border-radius:17px; gap:13px; }
+    .slide--subscription .num{ width:42px; height:42px; flex:0 0 42px; border-radius:13px; font-size:17px; }
+    .slide--subscription .step p{ font-size:20px; line-height:1.18; }
+    .slide--subscription .step-desc{ font-size:17.5px; line-height:1.2; margin-top:4px; }
+    .slide--subscription .card--term{ align-self:start; padding:20px 22px; height:auto; }
+    .slide--subscription .card--term h3{ font-size:25px; margin-bottom:14px; }
+    .slide--subscription .card--term .note{ font-size:20px; line-height:1.4; margin-top:12px; }
+
+    .slide--cases .content{ gap:14px; }
+    .slide--cases .title--m{ font-size:70px; }
+    .slide--cases .subtitle{ font-size:28px; }
+
+    /* ══════════════════════════════════════════
+       ПЕЧАТЬ — 1920px @ 96dpi = 508mm × 286mm
+    ══════════════════════════════════════════ */
+    @page{ size:508mm 286mm; margin:0; }
+
+    @media print{
+      html{ width:508mm; height:286mm; }
+      body{
+        width:508mm; height:286mm;
+        margin:0; padding:0;
+        background:#fff !important;
+        -webkit-print-color-adjust:exact;
+        print-color-adjust:exact;
+      }
+      .deck{
+        display:block !important;
+        padding:0 !important; gap:0 !important;
+        background:#fff !important;
+      }
+      .slide{
+        display:block !important;
+        width:508mm !important; height:286mm !important;
+        min-height:286mm !important; max-height:286mm !important;
+        border-radius:0 !important; box-shadow:none !important;
+        overflow:hidden !important; position:relative !important;
+        margin:0 !important; padding:0 !important;
+        break-after:page; page-break-after:always;
+        break-inside:avoid; page-break-inside:avoid;
+      }
+      .slide:last-child{ break-after:avoid; page-break-after:avoid; }
+      .header{ padding:13mm 21mm 0 21mm !important; }
+      .content{
+        padding:5mm 21mm 18mm 21mm !important;
+        height:calc(286mm - 31mm) !important;
+        overflow:hidden !important;
+        display:flex !important; flex-direction:column !important;
+      }
+      .footer{ left:21mm !important; right:21mm !important; bottom:8mm !important; }
+
+      /* Слайд 2 */
+      .slide--support .content{ gap:8px !important; }
+      .slide--support .title--m{ font-size:54pt !important; }
+      .slide--support .subtitle{ font-size:21pt !important; }
+      .slide--support li{ font-size:15pt !important; margin:4px 0 !important; }
+      .slide--support .card{ padding:11px 14px !important; }
+      .slide--support .grid-2{ align-items:stretch !important; }
+      .slide--support .card{ height:100% !important; }
+
+      /* Слайд 5 */
+      .slide--transparency .grid-2{ align-items:stretch !important; }
+      .slide--transparency .card{ height:100% !important; }
+
+      /* Слайд 6 */
+      .slide--team .content{ gap:8px !important; }
+      .slide--team .title--m{ font-size:56pt !important; }
+      .slide--team .subtitle{ font-size:21pt !important; }
+      .slide--team .step{ padding:10px 13px !important; }
+      .slide--team .step p{ font-size:15pt !important; }
+      .slide--team .num{ width:39px !important; height:39px !important; flex-basis:39px !important; font-size:14pt !important; }
+
+      /* Слайд 8 */
+      .slide--oils .content{ gap:8px !important; }
+      .slide--oils .title--m{ font-size:56pt !important; }
+      .slide--oils .subtitle{ font-size:21pt !important; }
+      .slide--oils .step p{ font-size:15pt !important; }
+      .slide--oils .step-desc{ font-size:14pt !important; }
+      .slide--oils .card{ padding:11px 14px !important; }
+
+      /* Слайд 9 */
+      .slide--subscription .header{ padding-top:9mm !important; }
+      .slide--subscription .content{ padding-top:4mm !important; padding-bottom:14mm !important; gap:7px !important; }
+      .slide--subscription .title--m{ font-size:54pt !important; }
+      .slide--subscription .subtitle{ font-size:20pt !important; }
+      .slide--subscription .step p{ font-size:14.5pt !important; }
+      .slide--subscription .step-desc{ font-size:13pt !important; }
+      .slide--subscription .card{ padding:10px 14px !important; }
+      .slide--subscription .card--term{ padding:14px 17px !important; }
+      .slide--subscription .card--term h3{ font-size:18pt !important; }
+    }
+  </style>
+</head>
+
+<body>
+<main class="deck">
+
+  <!-- 1. Отбивка -->
+  <section class="slide slide--mist">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Техническая поддержка и развитие проекта автодистрибьютора</div>
       </div>
+      <div class="tag">
+        <span class="pill">Коммерческое предложение</span>
+      </div>
+    </div>
+    <div class="content" style="justify-content:center;">
+      <h1 class="title">Коммерческое<br>предложение</h1>
+      <p class="subtitle">
+        Поддержка, развитие и сопровождение цифровых продуктов: сайт, мобильное приложение, портал DNM
+      </p>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
 
-      <!-- Правая колонка — срок + принципы -->
-      <div style="display:flex; flex-direction:column; gap:20px;">
-
-        <div class="card" style="padding:24px 26px;">
-          <h3>Срок реализации</h3>
-          <p style="margin:0; font-size:37px; line-height:1.2; font-weight:500;">
-            3–4 месяца
-          </p>
-          <div class="note">
-            Точные сроки зависят от количества продуктов, сложности интеграций
-            и готовности текущего подрядчика к передаче.
-          </div>
-        </div>
-
-        <div class="card" style="padding:24px 26px;">
-          <h3>Ключевые принципы</h3>
-          <ul style="padding-left:20px;">
-            <li>Нулевой простой — сайты работают на протяжении всего перехода</li>
-            <li>Фиксация каждого этапа актом приёмки‑передачи</li>
-            <li>Документирование всех процессов в Wiki</li>
-            <li>Прозрачная коммуникация и еженедельные статусы</li>
+  <!-- 2. Техподдержка -->
+  <section class="slide slide--support">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Техническая поддержка</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Поддержка и развитие</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Техническая поддержка — полный спектр услуг</h2>
+      <p class="subtitle">
+        Техническая поддержка сайта, мобильного приложения, портала DNM, развитие текущего функционала и разработка нового
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Эксплуатация и стабильность</h3>
+          <ul>
+            <li>автоматический мониторинг доступности сайта</li>
+            <li>корректировка мониторинга по запросу</li>
+            <li>ручной мониторинг настроек CMS сайта и журнала событий</li>
+            <li>базовое резервное копирование</li>
+            <li>решение инцидентов специалистами</li>
+            <li>контроль продления домена</li>
+            <li>контроль срока действия SSL сертификата</li>
+            <li>реагирование на инциденты, влияющие на работоспособность сайта</li>
           </ul>
         </div>
+        <div class="card">
+          <h3>Контент, SEO и развитие</h3>
+          <ul>
+            <li>размещение новостей, статей и других публикаций</li>
+            <li>наполнение каталога</li>
+            <li>обновление текстов, изображений, видео</li>
+            <li>SEO‑задачи</li>
+            <li>модернизация существующих и создание новых страниц сайта</li>
+            <li>разработка нового и корректировка текущего функционала</li>
+            <li>внесение изменений по запросам (аналитика, проектирование, дизайн, верстка, программирование,
+              создание и редактирование текстов, наполнение контентом, тестирование, IT‑работы)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 3. Логирование и мониторинг -->
+  <section class="slide slide--mist">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Надёжность и контроль</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Zabbix</span>
+        <span class="pill">Логи</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Логирование и мониторинг сайтов</h2>
+      <p class="subtitle">
+        Ведем журналы действий и осуществляем автоматический мониторинг доступности сайтов через систему Zabbix
+        для своевременного обнаружения и быстрого реагирования на инциденты.
+      </p>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="card">
+          <h3>Что делаем</h3>
+          <ul>
+            <li>фиксируем события и изменения</li>
+            <li>отслеживаем доступность и базовые метрики</li>
+            <li>оперативно реагируем на инциденты</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Результат</h3>
+          <ul>
+            <li>снижение рисков простоя</li>
+            <li>быстрое выявление деградаций</li>
+            <li>прозрачная история изменений для анализа причин</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 4. Защита от атак -->
+  <section class="slide">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Безопасность</div>
+      </div>
+      <div class="tag">
+        <span class="pill">SQLi / XSS / CSRF</span>
+        <span class="pill">Best practices</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Защита от атак</h2>
+      <p class="subtitle">
+        Против распространенных атак используем SQL‑инъекции, XSS, CSRF (межсайтовую подделку запроса).
+        Для настройки встроенных механизмов защиты — библиотеки и фреймворки.
+      </p>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="card">
+          <h3>Подход</h3>
+          <ul>
+            <li>валидируем входные данные и ограничиваем поверхности атак</li>
+            <li>используем безопасные практики работы с БД и формами</li>
+            <li>поддерживаем актуальность зависимостей</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Эффект</h3>
+          <ul>
+            <li>снижение рисков компрометации данных</li>
+            <li>стабильная работа ключевого функционала</li>
+            <li>контролируемые изменения без потери безопасности</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 5. Прозрачность процессов -->
+  <section class="slide slide--mist slide--transparency">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Управление задачами</div>
+      </div>
+      <div class="tag">
+        <span class="pill">PM‑система</span>
+        <span class="pill">Отчётность</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Прозрачность процессов</h2>
+      <p class="subtitle">
+        Добавляем клиентов в систему управления проектами — можно следить за ходом выполнения задач
+        (текущим статусом, временем на исполнение и т.д.).
+      </p>
+      <div class="grid-2" style="margin-top:22px;">
+        <div class="card">
+          <h3>В системе доступны</h3>
+          <ul>
+            <li>единый бэклог и приоритизация</li>
+            <li>статусы, сроки, исполнители</li>
+            <li>учёт трудозатрат</li>
+            <li>история коммуникаций и решений</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Для клиента</h3>
+          <ul>
+            <li>прогнозируемость сроков и загрузки</li>
+            <li>понимание текущих работ и рисков</li>
+            <li>регулярные отчёты по выполненным задачам</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 6. Команда -->
+  <section class="slide slide--team">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">In‑house команда</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Команда</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Команда</h2>
+      <p class="subtitle">
+        Изучаем бизнес клиента и предлагаем уникальные решения. Все сотрудники, необходимые для поддержки и развития сайтов, работают у нас в штате.
+      </p>
+      <div class="card" style="margin-top:14px;">
+        <div class="steps" style="grid-template-columns:repeat(3,1fr); gap:11px;">
+          <div class="step"><div class="num">UX</div><p><b>UX‑аналитика</b><br><span class="muted">исследования, сценарии, прототипы</span></p></div>
+          <div class="step"><div class="num">UI</div><p><b>Дизайн</b><br><span class="muted">интерфейсы, дизайн‑система</span></p></div>
+          <div class="step"><div class="num num--wide">DevOps</div><p><b>DevOps</b><br><span class="muted">окружения, инфраструктура, эксплуатация</span></p></div>
+          <div class="step"><div class="num">FE</div><p><b>Front‑end</b><br><span class="muted">верстка, компоненты</span></p></div>
+          <div class="step"><div class="num">BE</div><p><b>Back‑end</b><br><span class="muted">API, БД, логика</span></p></div>
+          <div class="step"><div class="num">QA</div><p><b>QA</b><br><span class="muted">тестирование, регресс, приемка</span></p></div>
+          <div class="step"><div class="num">SEO</div><p><b>SEO</b><br><span class="muted">техзадачи, оптимизация</span></p></div>
+          <div class="step"><div class="num">CM</div><p><b>Контент‑менеджер</b><br><span class="muted">публикации, каталог</span></p></div>
+          <div class="step"><div class="num">PM</div><p><b>PM</b><br><span class="muted">план, SLA, коммуникации</span></p></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 7. Процесс работы SLA -->
+  <section class="slide slide--mist">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">SLA и контроль качества</div>
+      </div>
+      <div class="tag">
+        <span class="pill">QA</span>
+        <span class="pill">Wiki</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Процесс работы SLA</h2>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><p>Получаем обращение от клиента</p></div>
+        <div class="step"><div class="num">02</div><p>Обрабатываем заявку за фиксированное время согласно уровню SLA</p></div>
+        <div class="step"><div class="num">03</div><p>Выполняем задачи</p></div>
+        <div class="step"><div class="num">04</div><p>Контролируем деплой работ на продуктив QA‑отделом</p></div>
+        <div class="step"><div class="num">05</div><p>Ведем документацию в Wiki‑системе</p></div>
+        <div class="step"><div class="num">06</div><p>Передаем результат на приемку клиенту</p></div>
+        <div class="step" style="grid-column:1/span 2;"><div class="num">07</div><p>Составляем отчет по итогам выполненных работ</p></div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 8. Портал "Масла" -->
+  <section class="slide slide--oils">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Тендерное задание</div>
+      </div>
+      <div class="tag">
+        <span class="pill">SLA</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Портал "Масла"</h2>
+      <p class="subtitle">
+        Внедрение функционала заказа моторных масел дилерскими центрами внутри портала DNM
+      </p>
+      <div class="grid-2" style="margin-top:14px;">
+        <div class="card">
+          <h3>Этапы</h3>
+          <div class="steps steps--1col">
+            <div class="step">
+              <div class="num">01</div>
+              <p>
+                <b>Аналитика</b>
+                <span class="step-desc">
+                  Моделирование основных процессов, проработка пользовательских сценариев,
+                  описание пользовательских интерфейсов, моделирование архитектуры решения
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">02</div>
+              <p>
+                <b>Реализация</b>
+                <span class="step-desc">
+                  Управление заказами, Детальная страница заказа, Каталог, Отчетность, Настройка ролевой модели
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">03</div>
+              <p>
+                <b>Внедрение</b>
+                <span class="step-desc">
+                  Проверка работы разделов перед релизом и релиз на prod среду
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Срок реализации</h3>
+          <p style="margin:0;font-size:37px;line-height:1.2;font-weight:500;">5 месяцев</p>
+          <div class="note">
+            Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 9. Механизм управления подпиской -->
+  <section class="slide slide--mist slide--subscription">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Тендерное задание</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Подписка</span>
+        <span class="pill">Сайт + МП</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Механизм управления подпиской</h2>
+      <p class="subtitle">
+        Внедрение функционала механизма управления подпиской пользователей на сайте kia.ru и в мобильном приложении Kia Russia,
+        а также создание email-рассыльщика в административной панели.
+      </p>
+      <div class="grid-2">
+        <div class="card">
+          <h3>Этапы</h3>
+          <div class="steps steps--1col">
+            <div class="step">
+              <div class="num">01</div>
+              <p>
+                <b>Аналитика и проектирование</b>
+                <span class="step-desc">
+                  Моделирование основных процессов, проработка пользовательских сценариев, описание пользовательских интерфейсов,
+                  моделирование архитектуры решения
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">02</div>
+              <p>
+                <b>Реализация сайт</b>
+                <span class="step-desc">
+                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете,
+                  Доработка интеграции с CRM, Административная система с управлением рассылками
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">03</div>
+              <p>
+                <b>Внедрение сайт</b>
+                <span class="step-desc">
+                  Проверка работы разделов перед релизом и релиз на prod среду
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">04</div>
+              <p>
+                <b>Реализация МП</b>
+                <span class="step-desc">
+                  Разработка блока с формой подписки на новости, Разработка блока с формой подписки в Личном кабинете
+                </span>
+              </p>
+            </div>
+            <div class="step">
+              <div class="num">05</div>
+              <p>
+                <b>Внедрение МП</b>
+                <span class="step-desc">
+                  Проверка работы разделов перед релизом и релиз на prod среду
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="card card--term">
+          <h3>Срок реализации</h3>
+          <p style="margin:0;font-size:37px;line-height:1.2;font-weight:500;">3 месяца</p>
+          <div class="note">
+            Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 10. Экспертиза в авто — цифры -->
+  <section class="slide slide--mist">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Экспертиза в автомобильной отрасли</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Авто</span>
+        <span class="pill">Коммерческий транспорт</span>
+        <span class="pill">Спецтехника</span>
+      </div>
+    </div>
+    <div class="content" style="justify-content:center; gap:28px;">
+      <h1 class="title" style="font-size:84px;">7 лет экспертизы<br>в автомобильной сфере</h1>
+      <p class="subtitle">
+        Проектируем эффективные пользовательские пути, которые увеличивают конверсию
+        и продажи транспорта, сервисов и запчастей. Строим системы сайтов, каталоги,
+        маркетплейсы и мобильные приложения.
+      </p>
+      <div class="stats">
+        <div class="stat">
+          <span class="stat-value">30+</span>
+          <span class="stat-label">проектов</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">15+</span>
+          <span class="stat-label">клиентов</span>
+        </div>
+        <div class="stat">
+          <span class="stat-value">10+</span>
+          <span class="stat-label">наград</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 11. Преимущества -->
+  <section class="slide">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Почему выбирают нас</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Компетенции</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Наши преимущества</h2>
+      <p class="subtitle">
+        Глубокое понимание отрасли коммерческого транспорта и спецтехники, подтверждённое десятками реализованных проектов
+      </p>
+      <div class="grid-3" style="margin-top:28px;">
+        <div class="advantage-card">
+          <div class="advantage-icon">⚙</div>
+          <h3>Оптимизация процессов</h3>
+          <p>
+            Строим системы сайтов, которые оптимизируют бизнес‑процессы
+            и объединяют продукты в единую цифровую экосистему
+          </p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">★</div>
+          <h3>Отраслевой опыт</h3>
+          <p>
+            Обладаем большим опытом разработки онлайн‑каталогов,
+            маркетплейсов и дилерских порталов для автомобильной отрасли
+          </p>
+        </div>
+        <div class="advantage-card">
+          <div class="advantage-icon">3D</div>
+          <h3>Визуализация контента</h3>
+          <p>
+            Создаем эффектные 3D‑визуализации транспорта и запчастей,
+            повышающие вовлечённость и конверсию
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 12. Кейсы -->
+  <section class="slide slide--mist slide--cases">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">Реализованные проекты</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Кейсы</span>
+        <span class="pill">Авто</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Проекты в автомобильной сфере</h2>
+      <p class="subtitle">
+        Сайты, порталы, мобильные приложения и SEO‑продвижение для лидеров рынка коммерческого транспорта
+      </p>
+      <div class="cases">
+        <div class="case">
+          <div class="case-tag">Группа ГАЗ</div>
+          <h4>Группа ГАЗ</h4>
+          <p>Кольцо сайтов крупнейшего в России производителя коммерческого транспорта</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Группа ГАЗ</div>
+          <h4>Коммерческие автомобили ГАЗ</h4>
+          <p>Оптимизация и развитие системы сайтов</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Группа ГАЗ</div>
+          <h4>GAZ Global</h4>
+          <p>Международная витрина продукции Группы ГАЗ</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Приложение</div>
+          <h4>GAZ Connect</h4>
+          <p>Дизайн приложения для удаленного управления автопарком</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Маркетплейс</div>
+          <h4>G‑part</h4>
+          <p>Витрина запасных частей и комплектующих для автомобилей</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Дилер</div>
+          <h4>Ferronordic</h4>
+          <p>Международный сайт официального дилера Volvo и Renault Trucks</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">Сообщество</div>
+          <h4>Федерация свободных байкеров</h4>
+          <p>Информационный сайт для участников ассоциации</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">SEO</div>
+          <h4>BitStop</h4>
+          <p>Поисковое продвижение автостекольного бренда методом поддоменов</p>
+        </div>
+        <div class="case">
+          <div class="case-tag">SEO</div>
+          <h4>Русские автобусы</h4>
+          <p>Увеличение охвата запросов, числа целевых визитов и заявок</p>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
+
+  <!-- 13. Приёмка проекта -->
+  <section class="slide slide--mist">
+    <div class="header">
+      <div class="brand">
+        <div class="name">UPLAB</div>
+        <div class="desc">План перехода</div>
+      </div>
+      <div class="tag">
+        <span class="pill">Приёмка</span>
+        <span class="pill">3–4 месяца</span>
+      </div>
+    </div>
+    <div class="content">
+      <h2 class="title title--m">Приёмка проекта<br>от текущего подрядчика</h2>
+      <p class="subtitle">
+        Плавный и контролируемый переход без простоев и потери данных.
+        Каждый этап завершается фиксацией результатов и согласованием с клиентом.
+      </p>
+
+      <div class="grid-2" style="margin-top:20px;">
+
+        <!-- Левая — этапы -->
+        <div class="card" style="padding:24px 26px;">
+          <h3>Этапы перехода</h3>
+          <div class="steps steps--1col" style="margin-top:10px; gap:10px;">
+            <div class="step" style="padding:14px 17px;">
+              <div class="num">01</div>
+              <p>
+                <b>Аудит и передача доступов</b>
+                <span class="step-desc">
+                  Получение кодовой базы, доступов к серверам, репозиториям, CMS и интеграциям.
+                  Инвентаризация инфраструктуры и документации.
+                </span>
+              </p>
+            </div>
+            <div class="step" style="padding:14px 17px;">
+              <div class="num">02</div>
+              <p>
+                <b>Техническое обследование</b>
+                <span class="step-desc">
+                  Анализ архитектуры, качества кода, CI/CD, производительности.
+                  Выявление рисков и технического долга.
+                </span>
+              </p>
+            </div>
+            <div class="step" style="padding:14px 17px;">
+              <div class="num">03</div>
+              <p>
+                <b>Параллельная работа</b>
+                <span class="step-desc">
+                  Совместное сопровождение с текущим подрядчиком.
+                  Передача экспертизы, погружение команды, тестовые задачи.
+                </span>
+              </p>
+            </div>
+            <div class="step" style="padding:14px 17px;">
+              <div class="num">04</div>
+              <p>
+                <b>Полный переход</b>
+                <span class="step-desc">
+                  UPLAB принимает проект на полное сопровождение.
+                  Настройка мониторинга, SLA, регламентов и отчётности.
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Правая — срок + принципы -->
+        <div style="display:flex; flex-direction:column; gap:20px;">
+          <div class="card" style="padding:24px 26px;">
+            <h3>Срок реализации</h3>
+            <p style="margin:0; font-size:37px; line-height:1.2; font-weight:500;">3–4 месяца</p>
+            <div class="note">
+              Точные сроки зависят от количества продуктов, сложности интеграций
+              и готовности текущего подрядчика к передаче.
+            </div>
+          </div>
+          <div class="card" style="padding:24px 26px;">
+            <h3>Ключевые принципы</h3>
+            <ul style="padding-left:20px;">
+              <li>Нулевой простой — сайты работают на протяжении всего перехода</li>
+              <li>Фиксация каждого этапа актом приёмки‑передачи</li>
+              <li>Документирование всех процессов в Wiki</li>
+              <li>Прозрачная коммуникация и еженедельные статусы</li>
+            </ul>
+          </div>
+        </div>
 
       </div>
-
     </div>
-  </div>
+    <div class="footer">
+      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+    </div>
+  </section>
 
-  <div class="footer">
-    <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-    <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-  </div>
-</section>
+</main>
+</body>
+</html>
