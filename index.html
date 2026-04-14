@@ -1,530 +1,108 @@
-<!doctype html>
-<html lang="ru">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UPLAB — Экспертиза в авто</title>
-
-  <style>
-    @font-face{
-      font-family:"TT Commons";
-      src: url("./fonts/TTCommons-Regular.ttf") format("truetype");
-      font-weight:400; font-style:normal; font-display:swap;
-    }
-    @font-face{
-      font-family:"TT Commons";
-      src: url("./fonts/TTCommons-Medium.ttf") format("truetype");
-      font-weight:500; font-style:normal; font-display:swap;
-    }
-  </style>
-
-  <style>
-    :root{
-      --bg:#ffffff;
-      --text:#0B0F1A;
-      --muted:#6B7280;
-      --line:#E6EAF2;
-      --soft:#F5F7FB;
-      --accent:#0B59FF;
-      --slide-w:1920px;
-      --slide-h:1080px;
-      --r:25px;
-    }
-
-    *{ box-sizing:border-box; }
-
-    body{
-      margin:0;
-      font-family:"TT Commons", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      font-weight:400;
-      color:var(--text);
-      background:#0f172a;
-    }
-
-    .deck{
-      display:flex;
-      flex-direction:column;
-      gap:40px;
-      padding:40px;
-      align-items:center;
-    }
-
-    .slide{
-      width:var(--slide-w);
-      height:var(--slide-h);
-      background:var(--bg);
-      border-radius:30px;
-      box-shadow:0 36px 120px rgba(0,0,0,.35);
-      overflow:hidden;
-      position:relative;
-      page-break-after:always;
-      page-break-inside:avoid;
-    }
-
-    .slide--mist::after{
-      content:"";
-      position:absolute;
-      inset:-170px -170px auto auto;
-      width:1072px; height:733px;
-      background:radial-gradient(closest-side,rgba(11,89,255,.16),rgba(0,194,177,.08) 45%,rgba(255,255,255,0) 70%);
-      transform:rotate(8deg);
-      pointer-events:none;
-    }
-
-    .header{
-      padding:40px 79px 0 79px;
-      display:flex;
-      align-items:flex-start;
-      justify-content:space-between;
-      gap:22px;
-      position:relative;
-      z-index:2;
-      flex-shrink:0;
-    }
-    .brand{ display:flex; flex-direction:column; gap:6px; }
-    .brand .name{ font-weight:500; letter-spacing:.04em; font-size:24px; }
-    .brand .desc{ font-size:24px; color:var(--muted); line-height:1.3; max-width:1300px; }
-
-    .tag{ display:flex; gap:14px; flex-wrap:wrap; justify-content:flex-end; }
-    .pill{
-      border:1px solid var(--line); background:#fff; color:var(--muted);
-      border-radius:999px; padding:13px 20px; font-size:18px;
-      line-height:1; white-space:nowrap; font-weight:400;
-    }
-
-    .content{
-      padding:17px 79px 68px 79px;
-      display:flex;
-      flex-direction:column;
-      gap:17px;
-      position:relative;
-      z-index:2;
-      height:calc(var(--slide-h) - 102px);
-      overflow:hidden;
-    }
-
-    h1,h2,h3{ margin:0; }
-    .title{ font-size:96px; line-height:1.01; letter-spacing:-.02em; font-weight:500; }
-    .title--m{ font-size:76px; line-height:1.03; }
-
-    .subtitle{
-      margin:0; font-size:34px; line-height:1.3;
-      color:var(--muted); max-width:1660px; font-weight:400;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
-      align-items:start;
-      margin-top:8px;
-      min-height:0;
-    }
-
-    .grid-3{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:20px;
-      align-items:stretch;
-      margin-top:8px;
-      min-height:0;
-    }
-
-    .card{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:var(--r);
-      padding:20px 22px;
-      min-height:0;
-    }
-    .card h3{ font-size:25px; font-weight:500; margin:0 0 14px 0; }
-
-    ul{ margin:0; padding-left:22px; }
-    li{ margin:7px 0; line-height:1.22; font-size:22px; font-weight:400; }
-
-    .note{ color:var(--muted); font-size:20px; line-height:1.4; margin-top:12px; }
-
-    .steps{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:11px 17px;
-      margin-top:11px;
-    }
-    .steps--1col{ grid-template-columns:1fr; }
-    .steps--3col{ grid-template-columns:1fr 1fr 1fr; }
-
-    .step{
-      background:#fff;
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:14px 17px;
-      display:flex;
-      gap:14px;
-      align-items:flex-start;
-      min-width:0;
-    }
-    .num{
-      width:48px; height:48px; border-radius:14px;
-      background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
-      color:var(--accent); font-weight:500;
-      display:flex; align-items:center; justify-content:center;
-      flex:0 0 48px; font-size:20px; line-height:1;
-    }
-
-    .step p{ margin:0; line-height:1.2; font-size:22px; font-weight:400; }
-    .step p b{ font-weight:500; }
-    .step-desc{
-      display:block; margin-top:5px;
-      font-size:19px; line-height:1.22; color:var(--muted);
-    }
-
-    .muted{ color:var(--muted); }
-
-    /* ── Счётчики ── */
-    .stats{
-      display:flex;
-      gap:56px;
-      margin-top:20px;
-    }
-    .stat{
-      display:flex;
-      flex-direction:column;
-      gap:4px;
-    }
-    .stat-value{
-      font-size:86px;
-      font-weight:500;
-      line-height:1;
-      letter-spacing:-.02em;
-      background:linear-gradient(135deg, var(--accent), #00C2B1);
-      -webkit-background-clip:text;
-      -webkit-text-fill-color:transparent;
-      background-clip:text;
-    }
-    .stat-label{
-      font-size:24px;
-      color:var(--muted);
-      line-height:1.25;
-      font-weight:400;
-    }
-
-    /* ── Преимущества ── */
-    .advantage-card{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:var(--r);
-      padding:32px 28px;
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-    }
-    .advantage-card h3{
-      font-size:30px;
-      font-weight:500;
-      margin:0;
-    }
-    .advantage-card p{
-      margin:0;
-      font-size:23px;
-      line-height:1.35;
-      color:var(--muted);
-      font-weight:400;
-    }
-    .advantage-icon{
-      width:56px; height:56px; border-radius:16px;
-      background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
-      color:var(--accent);
-      display:flex; align-items:center; justify-content:center;
-      font-size:24px; font-weight:500;
-      flex-shrink:0;
-    }
-
-    /* ── Кейсы ── */
-    .cases{
-      display:grid;
-      grid-template-columns:1fr 1fr 1fr;
-      gap:14px;
-      margin-top:12px;
-    }
-    .case{
-      background:var(--soft);
-      border:1px solid var(--line);
-      border-radius:20px;
-      padding:20px 22px;
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-    .case h4{
-      margin:0;
-      font-size:22px;
-      font-weight:500;
-      line-height:1.2;
-    }
-    .case p{
-      margin:0;
-      font-size:18px;
-      line-height:1.3;
-      color:var(--muted);
-      font-weight:400;
-    }
-    .case-tag{
-      display:inline-block;
-      background:linear-gradient(135deg,rgba(11,89,255,.08),rgba(0,194,177,.06));
-      color:var(--accent);
-      border-radius:8px;
-      padding:5px 10px;
-      font-size:14px;
-      font-weight:500;
-      line-height:1;
-      align-self:flex-start;
-    }
-
-    .footer{
-      position:absolute;
-      left:79px; right:79px; bottom:28px;
-      display:flex;
-      justify-content:flex-start;
-      align-items:center;
-      gap:17px;
-      color:var(--muted); font-size:18px;
-      z-index:2; flex-wrap:wrap; font-weight:400;
-    }
-    .dot{
-      width:6px; height:6px; border-radius:50%;
-      background:var(--line); display:inline-block; transform:translateY(-1px);
-    }
-
-    /* ══ Слайд кейсов — компактнее ══ */
-    .slide--cases .content{ gap:14px; }
-    .slide--cases .title--m{ font-size:70px; }
-    .slide--cases .subtitle{ font-size:28px; }
-
-    /* ══════════════════════════════════════════
-       ПЕЧАТЬ
-    ══════════════════════════════════════════ */
-    @page{ size:508mm 286mm; margin:0; }
-
-    @media print{
-      html{ width:508mm; height:286mm; }
-      body{
-        width:508mm; height:286mm;
-        margin:0; padding:0;
-        background:#fff !important;
-        -webkit-print-color-adjust:exact;
-        print-color-adjust:exact;
-      }
-      .deck{
-        display:block !important;
-        padding:0 !important; gap:0 !important;
-        background:#fff !important;
-      }
-      .slide{
-        display:block !important;
-        width:508mm !important; height:286mm !important;
-        min-height:286mm !important; max-height:286mm !important;
-        border-radius:0 !important; box-shadow:none !important;
-        overflow:hidden !important; position:relative !important;
-        margin:0 !important; padding:0 !important;
-        break-after:page; page-break-after:always;
-        break-inside:avoid; page-break-inside:avoid;
-      }
-      .slide:last-child{ break-after:avoid; page-break-after:avoid; }
-      .header{ padding:13mm 21mm 0 21mm !important; }
-      .content{
-        padding:5mm 21mm 18mm 21mm !important;
-        height:calc(286mm - 31mm) !important;
-        overflow:hidden !important;
-        display:flex !important; flex-direction:column !important;
-      }
-      .footer{ left:21mm !important; right:21mm !important; bottom:8mm !important; }
-    }
-  </style>
-</head>
-
-<body>
-<main class="deck">
-
-  <!-- ═══ СЛАЙД 1: Экспертиза + цифры ═══ -->
-  <section class="slide slide--mist">
-    <div class="header">
-      <div class="brand">
-        <div class="name">UPLAB</div>
-        <div class="desc">Экспертиза в автомобильной отрасли</div>
-      </div>
-      <div class="tag">
-        <span class="pill">Авто</span>
-        <span class="pill">Коммерческий транспорт</span>
-        <span class="pill">Спецтехника</span>
-      </div>
+<!-- ═══ СЛАЙД: Приёмка проекта ═══ -->
+<section class="slide slide--mist">
+  <div class="header">
+    <div class="brand">
+      <div class="name">UPLAB</div>
+      <div class="desc">План перехода</div>
     </div>
+    <div class="tag">
+      <span class="pill">Приёмка</span>
+      <span class="pill">3–4 месяца</span>
+    </div>
+  </div>
 
-    <div class="content" style="justify-content:center; gap:28px;">
-      <h1 class="title" style="font-size:84px;">7 лет экспертизы<br>в автомобильной сфере</h1>
-      <p class="subtitle">
-        Проектируем эффективные пользовательские пути, которые увеличивают конверсию
-        и продажи транспорта, сервисов и запчастей. Строим системы сайтов, каталоги,
-        маркетплейсы и мобильные приложения.
-      </p>
+  <div class="content">
+    <h2 class="title title--m">Приёмка проекта<br>от текущего подрядчика</h2>
+    <p class="subtitle">
+      Плавный и контролируемый переход без простоев и потери данных.
+      Каждый этап завершается фиксацией результатов и согласованием с клиентом.
+    </p>
 
-      <div class="stats">
-        <div class="stat">
-          <span class="stat-value">30+</span>
-          <span class="stat-label">проектов</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">15+</span>
-          <span class="stat-label">клиентов</span>
-        </div>
-        <div class="stat">
-          <span class="stat-value">10+</span>
-          <span class="stat-label">наград</span>
+    <div class="grid-2" style="margin-top:20px;">
+
+      <!-- Левая колонка — этапы -->
+      <div class="card" style="padding:24px 26px;">
+        <h3>Этапы перехода</h3>
+        <div class="steps steps--1col" style="margin-top:10px; gap:10px;">
+
+          <div class="step" style="padding:14px 17px;">
+            <div class="num">01</div>
+            <p>
+              <b>Аудит и передача доступов</b>
+              <span class="step-desc">
+                Получение кодовой базы, доступов к серверам, репозиториям, CMS и интеграциям.
+                Инвентаризация инфраструктуры и документации.
+              </span>
+            </p>
+          </div>
+
+          <div class="step" style="padding:14px 17px;">
+            <div class="num">02</div>
+            <p>
+              <b>Техническое обследование</b>
+              <span class="step-desc">
+                Анализ архитектуры, качества кода, CI/CD, производительности.
+                Выявление рисков и технического долга.
+              </span>
+            </p>
+          </div>
+
+          <div class="step" style="padding:14px 17px;">
+            <div class="num">03</div>
+            <p>
+              <b>Параллельная работа</b>
+              <span class="step-desc">
+                Совместное сопровождение с текущим подрядчиком.
+                Передача экспертизы, погружение команды, тестовые задачи.
+              </span>
+            </p>
+          </div>
+
+          <div class="step" style="padding:14px 17px;">
+            <div class="num">04</div>
+            <p>
+              <b>Полный переход</b>
+              <span class="step-desc">
+                UPLAB принимает проект на полное сопровождение.
+                Настройка мониторинга, SLA, регламентов и отчётности.
+              </span>
+            </p>
+          </div>
+
         </div>
       </div>
-    </div>
 
-    <div class="footer">
-      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-    </div>
-  </section>
+      <!-- Правая колонка — срок + принципы -->
+      <div style="display:flex; flex-direction:column; gap:20px;">
 
-  <!-- ═══ СЛАЙД 2: Преимущества ═══ -->
-  <section class="slide">
-    <div class="header">
-      <div class="brand">
-        <div class="name">UPLAB</div>
-        <div class="desc">Почему выбирают нас</div>
-      </div>
-      <div class="tag">
-        <span class="pill">Компетенции</span>
-      </div>
-    </div>
-
-    <div class="content">
-      <h2 class="title title--m">Наши преимущества</h2>
-      <p class="subtitle">
-        Глубокое понимание отрасли коммерческого транспорта и спецтехники, подтверждённое десятками реализованных проектов
-      </p>
-
-      <div class="grid-3" style="margin-top:28px;">
-        <div class="advantage-card">
-          <div class="advantage-icon">⚙</div>
-          <h3>Оптимизация процессов</h3>
-          <p>
-            Строим системы сайтов, которые оптимизируют бизнес‑процессы
-            и объединяют продукты в единую цифровую экосистему
+        <div class="card" style="padding:24px 26px;">
+          <h3>Срок реализации</h3>
+          <p style="margin:0; font-size:37px; line-height:1.2; font-weight:500;">
+            3–4 месяца
           </p>
+          <div class="note">
+            Точные сроки зависят от количества продуктов, сложности интеграций
+            и готовности текущего подрядчика к передаче.
+          </div>
         </div>
 
-        <div class="advantage-card">
-          <div class="advantage-icon">★</div>
-          <h3>Отраслевой опыт</h3>
-          <p>
-            Обладаем большим опытом разработки онлайн‑каталогов,
-            маркетплейсов и дилерских порталов для автомобильной отрасли
-          </p>
+        <div class="card" style="padding:24px 26px;">
+          <h3>Ключевые принципы</h3>
+          <ul style="padding-left:20px;">
+            <li>Нулевой простой — сайты работают на протяжении всего перехода</li>
+            <li>Фиксация каждого этапа актом приёмки‑передачи</li>
+            <li>Документирование всех процессов в Wiki</li>
+            <li>Прозрачная коммуникация и еженедельные статусы</li>
+          </ul>
         </div>
 
-        <div class="advantage-card">
-          <div class="advantage-icon">3D</div>
-          <h3>Визуализация контента</h3>
-          <p>
-            Создаем эффектные 3D‑визуализации транспорта и запчастей,
-            повышающие вовлечённость и конверсию
-          </p>
-        </div>
       </div>
+
     </div>
+  </div>
 
-    <div class="footer">
-      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-    </div>
-  </section>
-
-  <!-- ═══ СЛАЙД 3: Кейсы ═══ -->
-  <section class="slide slide--mist slide--cases">
-    <div class="header">
-      <div class="brand">
-        <div class="name">UPLAB</div>
-        <div class="desc">Реализованные проекты</div>
-      </div>
-      <div class="tag">
-        <span class="pill">Кейсы</span>
-        <span class="pill">Авто</span>
-      </div>
-    </div>
-
-    <div class="content">
-      <h2 class="title title--m">Проекты в автомобильной сфере</h2>
-      <p class="subtitle">
-        Сайты, порталы, мобильные приложения и SEO‑продвижение для лидеров рынка коммерческого транспорта
-      </p>
-
-      <div class="cases">
-        <div class="case">
-          <div class="case-tag">Группа ГАЗ</div>
-          <h4>Группа ГАЗ</h4>
-          <p>Кольцо сайтов крупнейшего в России производителя коммерческого транспорта</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Группа ГАЗ</div>
-          <h4>Коммерческие автомобили ГАЗ</h4>
-          <p>Оптимизация и развитие системы сайтов</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Группа ГАЗ</div>
-          <h4>GAZ Global</h4>
-          <p>Международная витрина продукции Группы ГАЗ</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Приложение</div>
-          <h4>GAZ Connect</h4>
-          <p>Дизайн приложения для удаленного управления автопарком</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Маркетплейс</div>
-          <h4>G‑part</h4>
-          <p>Витрина запасных частей и комплектующих для автомобилей</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Дилер</div>
-          <h4>Ferronordic</h4>
-          <p>Международный сайт официального дилера Volvo и Renault Trucks</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">Сообщество</div>
-          <h4>Федерация свободных байкеров</h4>
-          <p>Информационный сайт для участников ассоциации</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">SEO</div>
-          <h4>BitStop</h4>
-          <p>Поисковое продвижение автостекольного бренда методом поддоменов</p>
-        </div>
-
-        <div class="case">
-          <div class="case-tag">SEO</div>
-          <h4>Русские автобусы</h4>
-          <p>Увеличение охвата запросов, числа целевых визитов и заявок</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer">
-      <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
-      <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
-    </div>
-  </section>
-
-</main>
-</body>
-</html>
+  <div class="footer">
+    <span>Москва</span><span class="dot"></span><span>Чебоксары</span><span class="dot"></span>
+    <span>www.uplab.ru</span><span class="dot"></span><span>info@uplab.ru</span><span class="dot"></span><span>+7 499 653 78 83</span>
+  </div>
+</section>
