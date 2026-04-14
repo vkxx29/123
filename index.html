@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UPLAB — Доп. слайды 4K</title>
+  <title>UPLAB — Доп. слайды 2880×1620</title>
 
   <style>
     @font-face{
@@ -27,10 +27,10 @@
       --soft:#F5F7FB;
       --accent:#0B59FF;
 
-      /* 4K 16:9 */
-      --slide-w: 3840px;
-      --slide-h: 2160px;
-      --r: 50px;
+      /* 2880×1620 16:9 */
+      --slide-w: 2880px;
+      --slide-h: 1620px;
+      --r: 38px;
     }
 
     *{ box-sizing:border-box; }
@@ -55,8 +55,8 @@
       width:var(--slide-w);
       height:var(--slide-h);
       background:var(--bg);
-      border-radius:60px;
-      box-shadow:0 60px 200px rgba(0,0,0,.35);
+      border-radius:46px;
+      box-shadow:0 54px 180px rgba(0,0,0,.35);
       overflow:hidden;
       position:relative;
       page-break-after:always;
@@ -66,8 +66,8 @@
     .slide--mist::after{
       content:"";
       position:absolute;
-      inset:-340px -340px auto auto;
-      width:2140px; height:1460px;
+      inset:-254px -254px auto auto;
+      width:1604px; height:1098px;
       background:radial-gradient(closest-side,rgba(11,89,255,.16),rgba(0,194,177,.08) 45%,rgba(255,255,255,0) 70%);
       transform:rotate(8deg);
       pointer-events:none;
@@ -75,53 +75,53 @@
 
     /* ── Шапка ── */
     .header{
-      padding:80px 158px 0 158px;
+      padding:60px 118px 0 118px;
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap:45px;
+      gap:34px;
       position:relative;
       z-index:2;
       flex-shrink:0;
     }
-    .brand{ display:flex; flex-direction:column; gap:11px; }
-    .brand .name{ font-weight:500; letter-spacing:.04em; font-size:48px; }
-    .brand .desc{ font-size:48px; color:var(--muted); line-height:1.3; max-width:2580px; }
+    .brand{ display:flex; flex-direction:column; gap:9px; }
+    .brand .name{ font-weight:500; letter-spacing:.04em; font-size:36px; }
+    .brand .desc{ font-size:36px; color:var(--muted); line-height:1.3; max-width:1940px; }
 
-    .tag{ display:flex; gap:28px; flex-wrap:wrap; justify-content:flex-end; }
+    .tag{ display:flex; gap:21px; flex-wrap:wrap; justify-content:flex-end; }
     .pill{
       border:1px solid var(--line); background:#fff; color:var(--muted);
-      border-radius:999px; padding:25px 39px; font-size:36px;
+      border-radius:999px; padding:19px 30px; font-size:27px;
       line-height:1; white-space:nowrap; font-weight:400;
     }
 
     /* ── Контент ── */
     .content{
-      padding:34px 158px 135px 158px;
+      padding:26px 118px 102px 118px;
       display:flex;
       flex-direction:column;
-      gap:34px;
+      gap:26px;
       position:relative;
       z-index:2;
-      height:calc(var(--slide-h) - 202px);
+      height:calc(var(--slide-h) - 153px);
       overflow:hidden;
     }
 
     h1,h2,h3{ margin:0; }
-    .title{ font-size:191px; line-height:1.01; letter-spacing:-.02em; font-weight:500; }
-    .title--m{ font-size:152px; line-height:1.03; }
+    .title{ font-size:144px; line-height:1.01; letter-spacing:-.02em; font-weight:500; }
+    .title--m{ font-size:114px; line-height:1.03; }
 
     .subtitle{
-      margin:0; font-size:67px; line-height:1.3;
-      color:var(--muted); max-width:3320px; font-weight:400;
+      margin:0; font-size:51px; line-height:1.3;
+      color:var(--muted); max-width:2490px; font-weight:400;
     }
 
     .grid-2{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:39px;
+      gap:30px;
       align-items:start;
-      margin-top:17px;
+      margin-top:12px;
       min-height:0;
     }
 
@@ -129,71 +129,71 @@
       background:var(--soft);
       border:1px solid var(--line);
       border-radius:var(--r);
-      padding:39px 45px;
+      padding:30px 34px;
       min-height:0;
     }
-    .card h3{ font-size:51px; font-weight:500; margin:0 0 28px 0; }
+    .card h3{ font-size:38px; font-weight:500; margin:0 0 21px 0; }
 
-    ul{ margin:0; padding-left:45px; }
-    li{ margin:14px 0; line-height:1.22; font-size:45px; font-weight:400; }
+    ul{ margin:0; padding-left:34px; }
+    li{ margin:10px 0; line-height:1.22; font-size:33px; font-weight:400; }
 
-    .note{ color:var(--muted); font-size:39px; line-height:1.4; margin-top:22px; }
+    .note{ color:var(--muted); font-size:30px; line-height:1.4; margin-top:18px; }
 
     .steps{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:22px 34px;
-      margin-top:22px;
+      gap:17px 26px;
+      margin-top:17px;
     }
     .steps--1col{ grid-template-columns:1fr; }
 
     .step{
       background:#fff;
       border:1px solid var(--line);
-      border-radius:39px;
-      padding:28px 34px;
+      border-radius:30px;
+      padding:21px 26px;
       display:flex;
-      gap:28px;
+      gap:21px;
       align-items:flex-start;
       min-width:0;
     }
     .num{
-      width:96px; height:96px; border-radius:28px;
+      width:72px; height:72px; border-radius:22px;
       background:linear-gradient(135deg,rgba(11,89,255,.12),rgba(0,194,177,.10));
       color:var(--accent); font-weight:500;
       display:flex; align-items:center; justify-content:center;
-      flex:0 0 96px; font-size:39px; line-height:1;
+      flex:0 0 72px; font-size:30px; line-height:1;
     }
-    .num--wide{ font-size:31px; letter-spacing:-.01em; padding:0 8px; text-align:center; line-height:1.05; }
+    .num--wide{ font-size:23px; letter-spacing:-.01em; padding:0 6px; text-align:center; line-height:1.05; }
 
-    .step p{ margin:0; line-height:1.2; font-size:45px; font-weight:400; }
+    .step p{ margin:0; line-height:1.2; font-size:33px; font-weight:400; }
     .step p b{ font-weight:500; }
-    .step-desc{ display:block; margin-top:11px; font-size:38px; line-height:1.22; color:var(--muted); }
+    .step-desc{ display:block; margin-top:8px; font-size:29px; line-height:1.22; color:var(--muted); }
 
     .muted{ color:var(--muted); }
 
     /* ── Футер ── */
     .footer{
       position:absolute;
-      left:158px; right:158px; bottom:56px;
+      left:118px; right:118px; bottom:42px;
       display:flex;
       justify-content:flex-start;
       align-items:center;
-      gap:34px;
-      color:var(--muted); font-size:36px;
+      gap:26px;
+      color:var(--muted); font-size:27px;
       z-index:2; flex-wrap:wrap; font-weight:400;
     }
     .dot{
-      width:11px; height:11px; border-radius:50%;
-      background:var(--line); display:inline-block; transform:translateY(-2px);
+      width:8px; height:8px; border-radius:50%;
+      background:var(--line); display:inline-block; transform:translateY(-1px);
     }
 
     /* ══ Слайд 2 ══ */
-    .slide--support .content{ gap:28px; }
-    .slide--support .title--m{ font-size:135px; }
-    .slide--support .subtitle{ font-size:56px; }
-    .slide--support .card{ padding:34px 39px; }
-    .slide--support li{ font-size:42px; margin:11px 0; }
+    .slide--support .content{ gap:21px; }
+    .slide--support .title--m{ font-size:102px; }
+    .slide--support .subtitle{ font-size:42px; }
+    .slide--support .card{ padding:26px 30px; }
+    .slide--support li{ font-size:32px; margin:9px 0; }
     .slide--support .grid-2{ align-items:stretch; }
     .slide--support .card{ height:100%; }
 
@@ -202,60 +202,60 @@
     .slide--transparency .card{ height:100%; }
 
     /* ══ Слайд 6 ══ */
-    .slide--team .content{ gap:28px; }
-    .slide--team .title--m{ font-size:140px; }
-    .slide--team .subtitle{ font-size:59px; }
-    .slide--team .card{ padding:39px 45px; }
-    .slide--team .step{ padding:25px 31px; gap:25px; }
-    .slide--team .step p{ font-size:42px; }
-    .slide--team .num{ width:90px; height:90px; flex:0 0 90px; font-size:36px; border-radius:25px; }
-    .slide--team .num--wide{ font-size:28px; }
+    .slide--team .content{ gap:21px; }
+    .slide--team .title--m{ font-size:106px; }
+    .slide--team .subtitle{ font-size:45px; }
+    .slide--team .card{ padding:30px 34px; }
+    .slide--team .step{ padding:19px 24px; gap:19px; }
+    .slide--team .step p{ font-size:32px; }
+    .slide--team .num{ width:68px; height:68px; flex:0 0 68px; font-size:27px; border-radius:20px; }
+    .slide--team .num--wide{ font-size:21px; }
 
     /* ══ Слайд 8 ══ */
-    .slide--oils .content{ gap:28px; }
-    .slide--oils .title--m{ font-size:140px; }
-    .slide--oils .subtitle{ font-size:59px; }
-    .slide--oils .card{ padding:34px 39px; }
-    .slide--oils .card h3{ font-size:48px; margin-bottom:22px; }
-    .slide--oils .step{ padding:25px 31px; gap:25px; }
-    .slide--oils .step p{ font-size:42px; }
-    .slide--oils .step-desc{ font-size:36px; margin-top:8px; }
-    .slide--oils .num{ width:90px; height:90px; flex:0 0 90px; font-size:36px; border-radius:25px; }
+    .slide--oils .content{ gap:21px; }
+    .slide--oils .title--m{ font-size:106px; }
+    .slide--oils .subtitle{ font-size:45px; }
+    .slide--oils .card{ padding:26px 30px; }
+    .slide--oils .card h3{ font-size:36px; margin-bottom:17px; }
+    .slide--oils .step{ padding:19px 24px; gap:19px; }
+    .slide--oils .step p{ font-size:32px; }
+    .slide--oils .step-desc{ font-size:27px; margin-top:6px; }
+    .slide--oils .num{ width:68px; height:68px; flex:0 0 68px; font-size:27px; border-radius:20px; }
 
     /* ══ Слайд 9 ══ */
-    .slide--subscription .header{ padding-top:56px; }
-    .slide--subscription .content{ gap:20px; padding-top:22px; padding-bottom:124px; }
-    .slide--subscription .title--m{ font-size:135px; line-height:1.02; }
-    .slide--subscription .subtitle{ font-size:56px; line-height:1.26; }
-    .slide--subscription .grid-2{ margin-top:17px; gap:34px; }
-    .slide--subscription .card{ padding:28px 39px; height:auto; }
-    .slide--subscription .card h3{ font-size:45px; margin-bottom:20px; }
-    .slide--subscription .steps{ margin-top:14px; gap:14px; }
-    .slide--subscription .step{ padding:20px 28px; border-radius:34px; gap:25px; }
-    .slide--subscription .num{ width:84px; height:84px; flex:0 0 84px; border-radius:25px; font-size:34px; }
-    .slide--subscription .step p{ font-size:39px; line-height:1.18; }
-    .slide--subscription .step-desc{ font-size:35px; line-height:1.2; margin-top:8px; }
-    .slide--subscription .card--term{ align-self:start; padding:39px 45px; height:auto; }
-    .slide--subscription .card--term h3{ font-size:51px; margin-bottom:28px; }
-    .slide--subscription .card--term .note{ font-size:39px; line-height:1.4; margin-top:22px; }
+    .slide--subscription .header{ padding-top:42px; }
+    .slide--subscription .content{ gap:15px; padding-top:17px; padding-bottom:93px; }
+    .slide--subscription .title--m{ font-size:102px; line-height:1.02; }
+    .slide--subscription .subtitle{ font-size:42px; line-height:1.26; }
+    .slide--subscription .grid-2{ margin-top:12px; gap:26px; }
+    .slide--subscription .card{ padding:21px 30px; height:auto; }
+    .slide--subscription .card h3{ font-size:34px; margin-bottom:15px; }
+    .slide--subscription .steps{ margin-top:11px; gap:11px; }
+    .slide--subscription .step{ padding:15px 21px; border-radius:26px; gap:19px; }
+    .slide--subscription .num{ width:63px; height:63px; flex:0 0 63px; border-radius:19px; font-size:26px; }
+    .slide--subscription .step p{ font-size:30px; line-height:1.18; }
+    .slide--subscription .step-desc{ font-size:26px; line-height:1.2; margin-top:6px; }
+    .slide--subscription .card--term{ align-self:start; padding:30px 34px; height:auto; }
+    .slide--subscription .card--term h3{ font-size:38px; margin-bottom:21px; }
+    .slide--subscription .card--term .note{ font-size:30px; line-height:1.4; margin-top:18px; }
 
     /* ══════════════════════════════════════════
        ПЕЧАТЬ
+       2880px @ 96dpi = 762mm × 428.6mm ≈ 762×429mm
     ══════════════════════════════════════════ */
     @page{
-      /* 4K в мм: 3840px @ 96dpi = 1016mm × 571.5mm */
-      size: 1016mm 572mm;
+      size: 762mm 429mm;
       margin: 0;
     }
 
     @media print{
       html{
-        width: 1016mm;
-        height: 572mm;
+        width: 762mm;
+        height: 429mm;
       }
       body{
-        width: 1016mm;
-        height: 572mm;
+        width: 762mm;
+        height: 429mm;
         margin: 0; padding: 0;
         background: #fff !important;
         -webkit-print-color-adjust: exact;
@@ -271,10 +271,10 @@
 
       .slide{
         display: block !important;
-        width: 1016mm !important;
-        height: 572mm !important;
-        min-height: 572mm !important;
-        max-height: 572mm !important;
+        width: 762mm !important;
+        height: 429mm !important;
+        min-height: 429mm !important;
+        max-height: 429mm !important;
         border-radius: 0 !important;
         box-shadow: none !important;
         overflow: hidden !important;
@@ -292,23 +292,28 @@
         page-break-after: avoid;
       }
 
-      .header{ padding: 25mm 40mm 0 40mm !important; }
+      .header{ padding: 20mm 31mm 0 31mm !important; }
 
       .content{
-        padding: 11mm 40mm 34mm 40mm !important;
-        height: calc(572mm - 62mm) !important;
+        padding: 8mm 31mm 27mm 31mm !important;
+        height: calc(429mm - 47mm) !important;
         overflow: hidden !important;
         display: flex !important;
         flex-direction: column !important;
       }
 
       .footer{
-        left: 40mm !important;
-        right: 40mm !important;
-        bottom: 17mm !important;
+        left: 31mm !important;
+        right: 31mm !important;
+        bottom: 11mm !important;
       }
 
       /* Слайд 2 */
+      .slide--support .content{ gap:12px !important; }
+      .slide--support .title--m{ font-size:81pt !important; }
+      .slide--support .subtitle{ font-size:32pt !important; }
+      .slide--support li{ font-size:23pt !important; margin:6px 0 !important; }
+      .slide--support .card{ padding:17px 21px !important; }
       .slide--support .grid-2{ align-items:stretch !important; }
       .slide--support .card{ height:100% !important; }
 
@@ -316,10 +321,32 @@
       .slide--transparency .grid-2{ align-items:stretch !important; }
       .slide--transparency .card{ height:100% !important; }
 
+      /* Слайд 6 */
+      .slide--team .content{ gap:12px !important; }
+      .slide--team .title--m{ font-size:84pt !important; }
+      .slide--team .subtitle{ font-size:32pt !important; }
+      .slide--team .step{ padding:15px 19px !important; }
+      .slide--team .step p{ font-size:23pt !important; }
+      .slide--team .num{ width:58px !important; height:58px !important; flex-basis:58px !important; font-size:21pt !important; }
+
+      /* Слайд 8 */
+      .slide--oils .content{ gap:12px !important; }
+      .slide--oils .title--m{ font-size:84pt !important; }
+      .slide--oils .subtitle{ font-size:32pt !important; }
+      .slide--oils .step p{ font-size:23pt !important; }
+      .slide--oils .step-desc{ font-size:20pt !important; }
+      .slide--oils .card{ padding:17px 21px !important; }
+
       /* Слайд 9 */
-      .slide--subscription .header{ padding-top:18mm !important; }
-      .slide--subscription .content{ padding-top:8mm !important; padding-bottom:28mm !important; }
-      .slide--subscription .card--term{ padding:28px 39px !important; }
+      .slide--subscription .header{ padding-top:14mm !important; }
+      .slide--subscription .content{ padding-top:6mm !important; padding-bottom:21mm !important; gap:10px !important; }
+      .slide--subscription .title--m{ font-size:81pt !important; }
+      .slide--subscription .subtitle{ font-size:30pt !important; }
+      .slide--subscription .step p{ font-size:21pt !important; }
+      .slide--subscription .step-desc{ font-size:19pt !important; }
+      .slide--subscription .card{ padding:15px 21px !important; }
+      .slide--subscription .card--term{ padding:21px 26px !important; }
+      .slide--subscription .card--term h3{ font-size:27pt !important; }
     }
   </style>
 </head>
@@ -419,7 +446,7 @@
         Ведем журналы действий и осуществляем автоматический мониторинг доступности сайтов через систему Zabbix
         для своевременного обнаружения и быстрого реагирования на инциденты.
       </p>
-      <div class="grid-2" style="margin-top:45px;">
+      <div class="grid-2" style="margin-top:34px;">
         <div class="card">
           <h3>Что делаем</h3>
           <ul>
@@ -462,7 +489,7 @@
         Против распространенных атак используем SQL‑инъекции, XSS, CSRF (межсайтовую подделку запроса).
         Для настройки встроенных механизмов защиты — библиотеки и фреймворки.
       </p>
-      <div class="grid-2" style="margin-top:45px;">
+      <div class="grid-2" style="margin-top:34px;">
         <div class="card">
           <h3>Подход</h3>
           <ul>
@@ -505,7 +532,7 @@
         Добавляем клиентов в систему управления проектами — можно следить за ходом выполнения задач
         (текущим статусом, временем на исполнение и т.д.).
       </p>
-      <div class="grid-2" style="margin-top:45px;">
+      <div class="grid-2" style="margin-top:34px;">
         <div class="card">
           <h3>В системе доступны</h3>
           <ul>
@@ -547,8 +574,8 @@
       <p class="subtitle">
         Изучаем бизнес клиента и предлагаем уникальные решения. Все сотрудники, необходимые для поддержки и развития сайтов, работают у нас в штате.
       </p>
-      <div class="card" style="margin-top:28px;">
-        <div class="steps" style="grid-template-columns:repeat(3,1fr); gap:22px;">
+      <div class="card" style="margin-top:21px;">
+        <div class="steps" style="grid-template-columns:repeat(3,1fr); gap:17px;">
           <div class="step"><div class="num">UX</div><p><b>UX‑аналитика</b><br><span class="muted">исследования, сценарии, прототипы</span></p></div>
           <div class="step"><div class="num">UI</div><p><b>Дизайн</b><br><span class="muted">интерфейсы, дизайн‑система</span></p></div>
           <div class="step"><div class="num num--wide">DevOps</div><p><b>DevOps</b><br><span class="muted">окружения, инфраструктура, эксплуатация</span></p></div>
@@ -613,7 +640,7 @@
       <p class="subtitle">
         Внедрение функционала заказа моторных масел дилерскими центрами внутри портала DNM
       </p>
-      <div class="grid-2" style="margin-top:28px;">
+      <div class="grid-2" style="margin-top:21px;">
         <div class="card">
           <h3>Этапы</h3>
           <div class="steps steps--1col">
@@ -649,7 +676,7 @@
         </div>
         <div class="card">
           <h3>Срок реализации</h3>
-          <p style="margin:0;font-size:73px;line-height:1.2;font-weight:500;">5 месяцев</p>
+          <p style="margin:0;font-size:55px;line-height:1.2;font-weight:500;">5 месяцев</p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
@@ -735,7 +762,7 @@
         </div>
         <div class="card card--term">
           <h3>Срок реализации</h3>
-          <p style="margin:0;font-size:73px;line-height:1.2;font-weight:500;">3 месяца</p>
+          <p style="margin:0;font-size:55px;line-height:1.2;font-weight:500;">3 месяца</p>
           <div class="note">
             Детальный план фиксируем после этапа аналитики и согласования объема работ, интеграций и критериев приемки.
           </div>
